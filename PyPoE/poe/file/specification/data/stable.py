@@ -2234,28 +2234,6 @@ specification = Specification({
                 type='bool',
             ),
         ),
-        virtual_fields=(
-            VirtualField(
-                name='NormalPurchase',
-                fields=('NormalPurchase_BaseItemTypesKeys', 'NormalPurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='MagicPurchase',
-                fields=('MagicPurchase_BaseItemTypesKeys', 'MagicPurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='RarePurchase',
-                fields=('RarePurchase_BaseItemTypesKeys', 'RarePurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='UniquePurchase',
-                fields=('UniquePurchase_BaseItemTypesKeys', 'UniquePurchase_Costs'),
-                zip=True,
-            ),
-        ),
     ),
     'BestiaryCapturableMonsters.dat': File(
         fields=(
@@ -5143,7 +5121,7 @@ specification = Specification({
         virtual_fields=(
             VirtualField(
                 name='Cost',
-                fields=('Cost_BaseItemTypesKeys', 'Cost_Values'),
+                fields=('Cost_BaseItemTypes', 'Cost_Values'),
                 zip=True,
             ),
         ),
@@ -18674,8 +18652,8 @@ specification = Specification({
                 fields=('Stat1Value', 'Stat2Value', 'Stat3Value', 'Stat4Value', 'Stat5Value'),
             ),
             VirtualField(
-                name='Stats',
-                fields=('StatsKeys', 'StatValues'),
+                name='StatsZip',
+                fields=('Stats', 'StatValues'),
                 zip=True,
             ),
         ),
