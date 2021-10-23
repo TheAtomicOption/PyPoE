@@ -189,6 +189,10 @@ specification = Specification({
                 name='Flag2',
                 type='bool',
             ),
+            Field(
+                name='Flag3',
+                type='bool',
+            ),
         ),
     ),
     'AchievementSetRewards.dat': File(
@@ -1335,15 +1339,27 @@ specification = Specification({
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Armour',
+                name='ArmourMin',
                 type='int',
             ),
             Field(
-                name='Evasion',
+                name='ArmourMax',
                 type='int',
             ),
             Field(
-                name='EnergyShield',
+                name='EvasionMin',
+                type='int',
+            ),
+            Field(
+                name='EvasionMax',
+                type='int',
+            ),
+            Field(
+                name='EnergyShieldMin',
+                type='int',
+            ),
+            Field(
+                name='EnergyShieldMax',
                 type='int',
             ),
             Field(
@@ -1351,11 +1367,19 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Ward',
+                name='WardMin',
+                type='int',
+            ),
+            Field(
+                name='WardMax',
                 type='int',
             ),
             Field(
                 name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
                 type='int',
             ),
         ),
@@ -1398,6 +1422,20 @@ specification = Specification({
                 type='ref|string',
                 file_path=True,
                 file_ext='.ogg',
+            ),
+            Field(
+                name='PassiveTreeImage',
+                type='ref|string',
+                file_path=True,
+                file_ext='.dds',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
         ),
     ),
@@ -3898,6 +3936,10 @@ specification = Specification({
                 name='Flag18',
                 type='bool',
             ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
         ),
     ),
     'BuffTemplates.dat': File(
@@ -3945,6 +3987,10 @@ specification = Specification({
                 name='StatsKey',
                 type='ref|list|ulong',
                 key='Stats.dat',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
         ),
     ),
@@ -4582,6 +4628,20 @@ specification = Specification({
                 name='Keys1',
                 type='ref|list|ulong',
             ),
+            Field(
+                name='PassiveTreeImage',
+                type='ref|string',
+                file_path=True,
+                file_ext='.dds',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
         ),
     ),
     'ChestClusters.dat': File(
@@ -4950,6 +5010,14 @@ specification = Specification({
                 name='PerCharge',
                 type='int',
             ),
+            Field(
+                name='MaxCharges2',
+                type='int',
+            ),
+            Field(
+                name='PerCharge2',
+                type='int',
+            ),
         ),
     ),
     'CostTypes.dat': File(
@@ -4966,6 +5034,10 @@ specification = Specification({
             Field(
                 name='FormatText',
                 type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
             ),
         ),
     ),
@@ -5080,9 +5152,8 @@ specification = Specification({
                 type='ref|list|ulong',
             ),
             Field(
-                name='Tags',
+                name='Keys1',
                 type='ref|list|ulong',
-                key='Tags.dat',
             ),
             Field(
                 name='Unknown1',
@@ -5833,6 +5904,14 @@ specification = Specification({
                 name='BlockedDelveCraftingModifierDescriptionsKeys',
                 type='ref|list|ulong',
                 key='DelveCraftingModifierDescriptions.dat',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
             ),
         ),
     ),
@@ -8192,6 +8271,14 @@ specification = Specification({
             ),
             Field(
                 name='BuffStatValues',
+                type='ref|list|int',
+            ),
+            Field(
+                name='RecoveryTime2',
+                type='int',
+            ),
+            Field(
+                name='BuffStatValues2',
                 type='ref|list|int',
             ),
         ),
@@ -11352,6 +11439,7 @@ specification = Specification({
             Field(
                 name='Key0',
                 type='ulong',
+                key='Mods.dat',
             ),
             Field(
                 name='Data0',
@@ -11474,19 +11562,6 @@ specification = Specification({
                 file_ext='.ao',
             ),
             Field(
-                name='FavourCost',
-                type='int',
-            ),
-            Field(
-                name='MasterLevel',
-                type='int',
-            ),
-            Field(
-                name='HideoutNPCsKey',
-                type='ulong',
-                key='HideoutNPCs.dat',
-            ),
-            Field(
                 name='IsNonMasterDoodad',
                 type='bool',
             ),
@@ -11509,12 +11584,24 @@ specification = Specification({
                 file_ext='.ot, .otc',
             ),
             Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
                 name='IsCraftingBench',
                 type='bool',
             ),
             Field(
-                name='Flag0',
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Flag1',
                 type='bool',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -17725,18 +17812,6 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='HelpText',
-                type='ref|string',
-            ),
-            Field(
-                name='HelpTextForNextLevel',
-                type='ref|string',
-            ),
-            Field(
-                name='Key1',
-                type='ulong',
-            ),
-            Field(
                 name='Unknown0',
                 type='int',
             ),
@@ -17745,7 +17820,7 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Key2',
+                name='Key1',
                 type='ulong',
             ),
             Field(
@@ -17753,7 +17828,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Key3',
+                name='Key2',
                 type='ulong',
             ),
         ),
@@ -18449,6 +18524,68 @@ specification = Specification({
             ),
         ),
     ),
+    'PassiveSkillMasteryEffects.dat': File(
+        fields=(
+            Field(
+                name='ID',
+                type='ref|string',
+            ),
+            Field(
+                name='hash',
+                type='int',
+            ),
+            Field(
+                name='Stats',
+                type='ref|list|ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='Stat1Value',
+                type='int',
+            ),
+            Field(
+                name='Stat2Value',
+                type='int',
+            ),
+            Field(
+                name='Stat3Value',
+                type='int',
+            ),
+        ),
+    ),
+    'PassiveSkillMasteryGroups.dat': File(
+        fields=(
+            Field(
+                name='ID',
+                type='ref|string',
+            ),
+            Field(
+                name='MasteryEffects',
+                type='ref|list|ulong',
+                key='PassiveSkillMasteryEffects.dat',
+            ),
+            Field(
+                name='InactiveIcon',
+                type='ref|string',
+            ),
+            Field(
+                name='ActiveIcon',
+                type='ref|string',
+            ),
+            Field(
+                name='ActiveEffectImage',
+                type='ref|string',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+        ),
+    ),
     'PassiveSkillStatCategories.dat': File(
         fields=(
             Field(
@@ -18642,8 +18779,9 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Key0',
+                name='MasteryGroup',
                 type='ulong',
+                key='PassiveSkillMasteryGroups.dat',
             ),
         ),
         virtual_fields=(
