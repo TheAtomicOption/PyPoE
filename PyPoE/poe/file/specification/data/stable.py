@@ -317,6 +317,19 @@ specification = Specification({
             ),
         ),
     ),
+    'ActiveSkillType.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+                unique=True,
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+        ),
+    ),
     'ActiveSkills.dat': File(
         fields=(
             Field(
@@ -348,7 +361,8 @@ specification = Specification({
             ),
             Field(
                 name='ActiveSkillTypes',
-                type='ref|list|int',
+                type='ref|list|ulong',
+                key='ActiveSkillType.dat',
             ),
             Field(
                 name='WeaponRestriction_ItemClassesKeys',
@@ -395,7 +409,8 @@ specification = Specification({
             ),
             Field(
                 name='MinionActiveSkillTypes',
-                type='ref|list|int',
+                type='ref|list|ulong',
+                key='ActiveSkillType.dat',
             ),
             Field(
                 name='Flag2',
@@ -5053,7 +5068,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='ModsKey',
+                name='AddMod',
                 type='ulong',
                 key='Mods.dat',
             ),
@@ -5172,8 +5187,9 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Key1',
+                name='AddEnchantment',
                 type='ulong',
+                key='Mods.dat',
             ),
             Field(
                 name='SortCategory',
@@ -5181,7 +5197,7 @@ specification = Specification({
                 key='CraftingBenchSortCategories.dat',
             ),
             Field(
-                name='Key2',
+                name='Key1',
                 type='ulong',
             ),
             Field(
@@ -9067,7 +9083,8 @@ specification = Specification({
             ),
             Field(
                 name='AllowedActiveSkillTypes',
-                type='ref|list|int',
+                type='ref|list|ulong',
+                key='ActiveSkillType.dat',
                 description='This support gem only supports active skills with at least one of these types',
             ),
             Field(
@@ -9088,12 +9105,14 @@ specification = Specification({
             ),
             Field(
                 name='AddedActiveSkillTypes',
-                type='ref|list|int',
+                type='ref|list|ulong',
+                key='ActiveSkillType.dat',
                 description='This support gem adds these types to supported active skills',
             ),
             Field(
                 name='ExcludedActiveSkillTypes',
-                type='ref|list|int',
+                type='ref|list|ulong',
+                key='ActiveSkillType.dat',
                 description='This support gem does not support active skills with one of these types',
             ),
             Field(
@@ -19252,6 +19271,10 @@ specification = Specification({
             Field(
                 name='Flag5',
                 type='bool',
+            ),
+            Field(
+                name='Unknown12',
+                type='int',
             ),
         ),
     ),
