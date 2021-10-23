@@ -2338,6 +2338,24 @@ TranslationQuantifier(
 )
 
 TranslationQuantifier(
+   id='times_one_point_five',
+   handler=lambda v: v*1.5,
+   reverse_handler=lambda v: int(v/1.5),
+)
+
+TranslationQuantifier(
+   id='double',
+   handler=lambda v: v*2,
+   reverse_handler=lambda v: int(v)//2,
+)
+
+TranslationQuantifier(
+   id='negate_and_',
+   handler=lambda v: -v,
+   reverse_handler=lambda v: -v,
+)
+
+TranslationQuantifier(
     id='canonical_line',
     type=TranslationQuantifier.QuantifierTypes.STRING,
     arg_size=0,
