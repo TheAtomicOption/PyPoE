@@ -147,7 +147,7 @@ regex_translation_string = re.compile(
     r'^'
     r'[\s]*'
     r'(?P<minmax>(?:[0-9\-\|#!]+[ \t]+)+)'
-    r'"(?P<description>.*)"'
+    r'"(?P<description>.*\s*)"'
     r'(?P<quantifier>(?:[ \t]*[\w%]+)*)'
     r'[ \t]*[\r\n]*'
     r'$',
@@ -2350,9 +2350,15 @@ TranslationQuantifier(
 )
 
 TranslationQuantifier(
-   id='negate_and_',
-   handler=lambda v: -v,
-   reverse_handler=lambda v: -v,
+   id='negate_and_double',
+   handler=lambda v: -v * 2,
+   reverse_handler=lambda v: int(-v) // 2,
+)
+
+TranslationQuantifier(
+   id='divide_by_four',
+   handler=lambda v: v / 4,
+   reverse_handler=lambda v: v * 4,
 )
 
 TranslationQuantifier(
