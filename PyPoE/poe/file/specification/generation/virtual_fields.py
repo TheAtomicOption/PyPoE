@@ -42,28 +42,6 @@ virtual_fields = {
             zip=True,
         ),
     ],
-    'MapPurchaseCosts.dat': [
-        VirtualField(
-            name='NormalPurchase',
-            fields=('NormalPurchase_BaseItemTypesKeys', 'NormalPurchase_Costs'),
-            zip=True,
-        ),
-        VirtualField(
-            name='MagicPurchase',
-            fields=('MagicPurchase_BaseItemTypesKeys', 'MagicPurchase_Costs'),
-            zip=True,
-        ),
-        VirtualField(
-            name='RarePurchase',
-            fields=('RarePurchase_BaseItemTypesKeys', 'RarePurchase_Costs'),
-            zip=True,
-        ),
-        VirtualField(
-            name='UniquePurchase',
-            fields=('UniquePurchase_BaseItemTypesKeys', 'UniquePurchase_Costs'),
-            zip=True,
-        ),
-    ],
     'Mods.dat': [
         VirtualField(
             name='SpawnWeight',

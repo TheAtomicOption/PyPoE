@@ -36,8 +36,6 @@ from PyPoE.poe.file.specification.fields import *
 __all__ = ['specification', ]
 
 specification = Specification({
-    'SkillTotems.dat': File(
-    ),
     'AbyssObjects.dat': File(
         fields=(
             Field(
@@ -147,6 +145,10 @@ specification = Specification({
                 name='Message',
                 type='ref|string',
             ),
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
         ),
     ),
     'AchievementItems.dat': File(
@@ -228,6 +230,10 @@ specification = Specification({
             ),
             Field(
                 name='HideoutName',
+                type='ref|string',
+            ),
+            Field(
+                name='Id',
                 type='ref|string',
             ),
         ),
@@ -325,8 +331,9 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='Key0',
+                name='FlagStat',
                 type='ulong',
+                key='Stats.dat',
             ),
         ),
     ),
@@ -358,6 +365,7 @@ specification = Specification({
             Field(
                 name='ActiveSkillTargetTypes',
                 type='ref|list|int',
+                key='ActiveSkillTargetTypes.dat',
             ),
             Field(
                 name='ActiveSkillTypes',
@@ -392,6 +400,7 @@ specification = Specification({
             Field(
                 name='SkillTotemId',
                 type='int',
+                key='SkillTotems.dat',
             ),
             Field(
                 name='IsManuallyCasted',
@@ -423,6 +432,7 @@ specification = Specification({
             Field(
                 name='Keys0',
                 type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Unknown2',
@@ -458,6 +468,55 @@ specification = Specification({
             Field(
                 name='Flag7',
                 type='bool',
+            ),
+        ),
+    ),
+    'Acts.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+                unique=True,
+            ),
+            Field(
+                name='Part',
+                type='int',
+            ),
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='ActNumber',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='WorldPanelImage',
+                type='ref|string',
+            ),
+            Field(
+                name='WorldPanelImageEpilogue',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='IsPostGame',
+                type='bool',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
             ),
         ),
     ),
@@ -602,6 +661,50 @@ specification = Specification({
             ),
         ),
     ),
+    'AegisVariations.dat': File(
+        fields=(
+            Field(
+                name='Name',
+                type='ref|string',
+            ),
+            Field(
+                name='DefendsAgainstPhysical',
+                type='bool',
+            ),
+            Field(
+                name='DefendsAgainstFire',
+                type='bool',
+            ),
+            Field(
+                name='DefendsAgainstCold',
+                type='bool',
+            ),
+            Field(
+                name='DefendsAgainstLightning',
+                type='bool',
+            ),
+            Field(
+                name='DefendsAgainstChaos',
+                type='bool',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
+                name='Key3',
+                type='ulong',
+            ),
+        ),
+    ),
     'AfflictionBalancePerLevel.dat': File(
         fields=(
             Field(
@@ -698,6 +801,10 @@ specification = Specification({
                 type='ulong',
                 key='Mods.dat',
             ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
         ),
     ),
     'AfflictionRandomModCategories.dat': File(
@@ -720,6 +827,10 @@ specification = Specification({
                 type='ulong',
                 key='Mods.dat',
             ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
         ),
     ),
     'AfflictionRewardTypeVisuals.dat': File(
@@ -727,11 +838,11 @@ specification = Specification({
             Field(
                 name='AfflictionRewardTypes',
                 type='int',
+                key='AfflictionRewardTypes.dat',
             ),
             Field(
                 name='Id',
                 type='ref|string',
-                unique=True,
             ),
             Field(
                 name='Name',
@@ -1059,6 +1170,28 @@ specification = Specification({
             ),
         ),
     ),
+    'AnimatedObjectFlags.dat': File(
+        fields=(
+            Field(
+                name='AOFile',
+                type='ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
+            ),
+        ),
+    ),
     'Animation.dat': File(
         fields=(
             Field(
@@ -1075,11 +1208,6 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='IntId',
-                type='int',
-                unique=True,
-            ),
-            Field(
                 name='Flag2',
                 type='bool',
             ),
@@ -1094,6 +1222,10 @@ specification = Specification({
                 type='ref|string',
                 key='Animation.dat',
                 key_id='Id',
+            ),
+            Field(
+                name='Flag3',
+                type='bool',
             ),
         ),
     ),
@@ -1254,6 +1386,10 @@ specification = Specification({
                 name='Flag0',
                 type='bool',
             ),
+            Field(
+                name='Unknown2',
+                type='ref|string',
+            ),
         ),
     ),
     'AreaTransitionAnimationTypes.dat': File(
@@ -1289,22 +1425,6 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Unknown0',
-                type='int',
-            ),
-            Field(
-                name='Unknown1',
-                type='int',
-            ),
-            Field(
-                name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Unknown3',
-                type='int',
-            ),
-            Field(
                 name='Key2',
                 type='ulong',
             ),
@@ -1333,11 +1453,19 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
+                name='Key9',
+                type='ulong',
+            ),
+            Field(
+                name='Key10',
+                type='ulong',
+            ),
+            Field(
                 name='Keys0',
                 type='ref|list|ulong',
             ),
             Field(
-                name='Unknown4',
+                name='Unknown0',
                 type='int',
             ),
             Field(
@@ -1586,6 +1714,7 @@ specification = Specification({
             Field(
                 name='OutcomeType',
                 type='int',
+                key='AtlasExileInfluenceOutcomeTypes.dat',
             ),
         ),
     ),
@@ -2020,6 +2149,43 @@ specification = Specification({
             ),
         ),
     ),
+    'AtlasRegionUpgradeRegions.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+        ),
+    ),
+    'AtlasRegionUpgradesInventoryLayout.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+                unique=True,
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+        ),
+    ),
     'AtlasRegions.dat': File(
         fields=(
             Field(
@@ -2036,12 +2202,52 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
                 name='Unknown1',
-                type='int',
+                type='float',
             ),
             Field(
                 name='Unknown2',
+                type='float',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='CitadelName',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown3',
                 type='int',
+            ),
+            Field(
+                name='BK2File',
+                type='ref|string',
+                file_path=True,
+                file_ext='.bk2',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='AdviceAudio',
+                type='ulong',
+                key='NPCTextAudio.dat',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
+                name='Quest',
+                type='ulong',
+                key='Quest.dat',
             ),
         ),
     ),
@@ -2197,7 +2403,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='SoundEffectsKey',
+                name='SoundEffect',
                 type='ulong',
                 key='SoundEffects.dat',
             ),
@@ -2207,8 +2413,9 @@ specification = Specification({
                 key='Tags.dat',
             ),
             Field(
-                name='ModDomainsKey',
+                name='ModDomain',
                 type='int',
+                key='ModDomains.dat',
                 enum='MOD_DOMAIN',
             ),
             Field(
@@ -2216,7 +2423,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='ItemVisualIdentityKey',
+                name='ItemVisualIdentity',
                 type='ulong',
                 key='ItemVisualIdentity.dat',
             ),
@@ -2226,7 +2433,7 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='VendorRecipe_AchievementItemsKeys',
+                name='VendorRecipe_AchievementItems',
                 type='ref|list|ulong',
                 key='AchievementItems.dat',
             ),
@@ -2245,7 +2452,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Identify_AchievementItemsKeys',
+                name='Identify_AchievementItems',
                 type='ref|list|ulong',
                 key='AchievementItems.dat',
             ),
@@ -2255,7 +2462,7 @@ specification = Specification({
                 key='ItemThemes.dat',
             ),
             Field(
-                name='IdentifyMagic_AchievementItemsKeys',
+                name='IdentifyMagic_AchievementItems',
                 type='ref|list|ulong',
                 key='AchievementItems.dat',
             ),
@@ -2581,8 +2788,9 @@ specification = Specification({
                 key='BestiaryCapturableMonsters.dat',
             ),
             Field(
-                name='RarityKey',
-                type='int',
+                name='BeastRarity',
+                type='ulong',
+                key='Rarity.dat',
                 enum='RARITY',
             ),
             Field(
@@ -2633,6 +2841,10 @@ specification = Specification({
                 name='Unknown0',
                 type='int',
             ),
+            Field(
+                name='RedBeastsRequired',
+                type='int',
+            ),
         ),
     ),
     'BetrayalChoiceActions.dat': File(
@@ -2672,8 +2884,8 @@ specification = Specification({
     'BetrayalDialogue.dat': File(
         fields=(
             Field(
-                name='BetrayalDialogueCueKey',
-                type='int',
+                name='Key0',
+                type='ulong',
             ),
             Field(
                 name='Unknown0',
@@ -2697,7 +2909,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Key0',
+                name='Key1',
                 type='ulong',
             ),
             Field(
@@ -3096,6 +3308,10 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
                 name='Unknown1',
                 type='int',
             ),
@@ -3117,14 +3333,6 @@ specification = Specification({
             ),
             Field(
                 name='Unknown6',
-                type='int',
-            ),
-            Field(
-                name='Unknown7',
-                type='int',
-            ),
-            Field(
-                name='Unknown8',
                 type='int',
             ),
         ),
@@ -3166,6 +3374,10 @@ specification = Specification({
                 name='AchievementItemsKeys',
                 type='ref|list|ulong',
                 key='AchievementItems.dat',
+            ),
+            Field(
+                name='CanUseOnCorrupted',
+                type='bool',
             ),
         ),
     ),
@@ -3349,6 +3561,10 @@ specification = Specification({
                 name='Flag2',
                 type='bool',
             ),
+            Field(
+                name='Flag3',
+                type='bool',
+            ),
         ),
     ),
     'BlightTopologies.dat': File(
@@ -3409,8 +3625,8 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Type',
-                type='ref|string',
+                name='Angle',
+                type='int',
             ),
             Field(
                 name='Data1',
@@ -3435,6 +3651,10 @@ specification = Specification({
             Field(
                 name='Data6',
                 type='ref|list|int',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
             ),
         ),
     ),
@@ -3655,6 +3875,14 @@ specification = Specification({
                 file_path=True,
                 file_ext='.pet',
             ),
+            Field(
+                name='Key3',
+                type='ulong',
+            ),
+            Field(
+                name='Key4',
+                type='ulong',
+            ),
         ),
     ),
     'Bloodlines.dat': File(
@@ -3744,6 +3972,28 @@ specification = Specification({
             ),
         ),
     ),
+    'BreachElement.dat': File(
+        fields=(
+            Field(
+                name='Element',
+                type='ref|string',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='BaseBreachstone',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='BossMapMod',
+                type='ulong',
+                key='Stats.dat',
+            ),
+        ),
+    ),
     'BreachstoneUpgrades.dat': File(
         fields=(
             Field(
@@ -3765,6 +4015,10 @@ specification = Specification({
                 name='BaseItemTypesKey3',
                 type='ulong',
                 key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -3930,18 +4184,22 @@ specification = Specification({
             Field(
                 name='Keys0',
                 type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Keys1',
                 type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Keys2',
                 type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Keys3',
                 type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Unknown5',
@@ -3954,6 +4212,7 @@ specification = Specification({
             Field(
                 name='Key2',
                 type='ulong',
+                key='Stats.dat',
             ),
         ),
     ),
@@ -4227,6 +4486,22 @@ specification = Specification({
             ),
         ),
     ),
+    'BuffVisualsArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Buff',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+        ),
+    ),
     'CharacterAudioEvents.dat': File(
         fields=(
             Field(
@@ -4295,6 +4570,10 @@ specification = Specification({
             ),
             Field(
                 name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
                 type='bool',
             ),
         ),
@@ -4449,10 +4728,6 @@ specification = Specification({
                 name='PassiveSkillsKeys',
                 type='ref|list|ulong',
                 key='PassiveSkills.dat',
-            ),
-            Field(
-                name='IsPVP',
-                type='bool',
             ),
             Field(
                 name='CharacterStartStateSetKey',
@@ -4656,6 +4931,18 @@ specification = Specification({
             Field(
                 name='Unknown4',
                 type='int',
+            ),
+        ),
+    ),
+    'ChatIcons.dat': File(
+        fields=(
+            Field(
+                name='Icon',
+                type='ref|string',
+            ),
+            Field(
+                name='Image',
+                type='ref|string',
             ),
         ),
     ),
@@ -4896,6 +5183,30 @@ specification = Specification({
                 name='Data0',
                 type='ref|list|int',
             ),
+            Field(
+                name='Unknown4',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Unknown6',
+                type='int',
+            ),
+            Field(
+                name='Flag7',
+                type='bool',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
+                name='Key3',
+                type='ulong',
+            ),
         ),
     ),
     'ClientStrings.dat': File(
@@ -4931,7 +5242,7 @@ specification = Specification({
         fields=(
             Field(
                 name='Id',
-                type='ref|string',
+                type='int',
                 unique=True,
             ),
             Field(
@@ -4953,6 +5264,30 @@ specification = Specification({
                 name='MiscAnimated3',
                 type='ulong',
                 key='MiscAnimated.dat',
+            ),
+        ),
+    ),
+    'Colours.dat': File(
+        fields=(
+            Field(
+                name='Item',
+                type='ref|string',
+            ),
+            Field(
+                name='Red',
+                type='int',
+            ),
+            Field(
+                name='Green',
+                type='int',
+            ),
+            Field(
+                name='Blue',
+                type='int',
+            ),
+            Field(
+                name='RgbCode',
+                type='ref|string',
             ),
         ),
     ),
@@ -5040,6 +5375,7 @@ specification = Specification({
             Field(
                 name='Id',
                 type='ref|string',
+                unique=True,
             ),
             Field(
                 name='StatsKey',
@@ -5092,6 +5428,8 @@ specification = Specification({
             Field(
                 name='CraftingBenchCustomAction',
                 type='int',
+                key='CraftingBenchCustomActions.dat',
+                enum='CraftingBenchCustomActions',
             ),
             Field(
                 name='ItemClasses',
@@ -5221,8 +5559,9 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='Key0',
+                name='Name',
                 type='ulong',
+                key='ClientStrings.dat',
             ),
             Field(
                 name='IsVisible',
@@ -5363,17 +5702,19 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='AchievementItemsKeys',
+                name='ModifyMapsAchievements',
                 type='ref|list|ulong',
                 key='AchievementItems.dat',
             ),
             Field(
-                name='Keys1',
+                name='ModifyContractsAchievements',
                 type='ref|list|ulong',
+                key='AchievementItems.dat',
             ),
             Field(
-                name='Key2',
-                type='ulong',
+                name='CombineAchievements',
+                type='ref|list|ulong',
+                key='AchievementItems.dat',
             ),
         ),
     ),
@@ -5530,6 +5871,18 @@ specification = Specification({
                 name='Data1',
                 type='ref|list|ref|string',
             ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Data2',
+                type='ref|list|int',
+            ),
         ),
     ),
     'DamageParticleEffects.dat': File(
@@ -5537,6 +5890,7 @@ specification = Specification({
             Field(
                 name='DamageParticleEffectTypes',
                 type='int',
+                key='DamageParticleEffectTypes.dat',
             ),
             Field(
                 name='Variation',
@@ -5727,6 +6081,10 @@ specification = Specification({
             Field(
                 name='Unknown0',
                 type='int',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
             ),
         ),
     ),
@@ -6033,12 +6391,8 @@ specification = Specification({
                 key='AchievementItems.dat',
             ),
             Field(
-                name='MinTier',
-                type='int',
-            ),
-            Field(
-                name='Type',
-                type='ref|string',
+                name='Data0',
+                type='ref|list|int',
             ),
             Field(
                 name='MinDepth',
@@ -6053,15 +6407,15 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Data0',
-                type='ref|list|int',
-            ),
-            Field(
                 name='Data1',
                 type='ref|list|int',
             ),
             Field(
                 name='Data2',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data3',
                 type='ref|list|int',
             ),
         ),
@@ -6073,8 +6427,20 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
                 name='Unknown1',
                 type='int',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
             ),
             Field(
                 name='Unknown2',
@@ -6082,30 +6448,6 @@ specification = Specification({
             ),
             Field(
                 name='Unknown3',
-                type='int',
-            ),
-            Field(
-                name='Unknown4',
-                type='int',
-            ),
-            Field(
-                name='Unknown5',
-                type='int',
-            ),
-            Field(
-                name='Unknown6',
-                type='int',
-            ),
-            Field(
-                name='Unknown7',
-                type='int',
-            ),
-            Field(
-                name='Unknown8',
-                type='int',
-            ),
-            Field(
-                name='Unknown9',
                 type='int',
             ),
         ),
@@ -6166,6 +6508,10 @@ specification = Specification({
             ),
             Field(
                 name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Unknown6',
                 type='int',
             ),
         ),
@@ -6310,6 +6656,30 @@ specification = Specification({
             ),
         ),
     ),
+    'DelveRewardTierConstants.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+        ),
+    ),
     'DelveRooms.dat': File(
         fields=(
             Field(
@@ -6366,6 +6736,14 @@ specification = Specification({
             Field(
                 name='StackSize',
                 type='int',
+            ),
+            Field(
+                name='HideIfNoneOwned',
+                type='bool',
+            ),
+            Field(
+                name='Image',
+                type='ref|string',
             ),
         ),
     ),
@@ -6704,19 +7082,15 @@ specification = Specification({
                 type='ref|list|ulong',
             ),
             Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
                 name='Unknown1',
                 type='int',
             ),
             Field(
                 name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Unknown3',
-                type='int',
-            ),
-            Field(
-                name='Unknown4',
                 type='int',
             ),
             Field(
@@ -6728,12 +7102,24 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown5',
+                name='Flag2',
+                type='bool',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown3',
                 type='int',
             ),
             Field(
-                name='Flag2',
-                type='bool',
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
             ),
             Field(
                 name='Unknown6',
@@ -6744,27 +7130,11 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown8',
-                type='int',
-            ),
-            Field(
-                name='Unknown9',
-                type='int',
-            ),
-            Field(
-                name='Unknown10',
-                type='int',
-            ),
-            Field(
-                name='Unknown11',
-                type='int',
-            ),
-            Field(
                 name='Flag3',
                 type='bool',
             ),
             Field(
-                name='Unknown12',
+                name='Unknown8',
                 type='int',
             ),
             Field(
@@ -6776,11 +7146,11 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown13',
+                name='Unknown9',
                 type='int',
             ),
             Field(
-                name='Unknown14',
+                name='Unknown10',
                 type='int',
             ),
             Field(
@@ -6796,7 +7166,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown15',
+                name='Unknown11',
                 type='int',
             ),
             Field(
@@ -6806,6 +7176,18 @@ specification = Specification({
             Field(
                 name='Flag10',
                 type='bool',
+            ),
+            Field(
+                name='Unknown12',
+                type='int',
+            ),
+            Field(
+                name='Unknown13',
+                type='int',
+            ),
+            Field(
+                name='Unknown14',
+                type='int',
             ),
         ),
     ),
@@ -6979,12 +7361,8 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Unknown3',
-                type='int',
+                name='Data0',
+                type='ref|list|byte',
             ),
             Field(
                 name='EnvironmentTransitionsKey',
@@ -7462,12 +7840,16 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown9',
-                type='int',
-            ),
-            Field(
                 name='Flag2',
                 type='bool',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown9',
+                type='int',
             ),
             Field(
                 name='Unknown10',
@@ -7486,27 +7868,19 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown14',
-                type='int',
-            ),
-            Field(
-                name='Unknown15',
-                type='int',
-            ),
-            Field(
                 name='Flag3',
                 type='bool',
             ),
             Field(
-                name='Unknown16',
-                type='int',
+                name='Unknown14',
+                type='ref|string',
             ),
             Field(
                 name='Flag4',
                 type='bool',
             ),
             Field(
-                name='Unknown17',
+                name='Unknown15',
                 type='int',
             ),
             Field(
@@ -7514,11 +7888,11 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown18',
+                name='Unknown16',
                 type='int',
             ),
             Field(
-                name='Unknown19',
+                name='Unknown17',
                 type='int',
             ),
             Field(
@@ -7526,7 +7900,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown20',
+                name='Unknown18',
                 type='int',
             ),
             Field(
@@ -7540,23 +7914,23 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
+                name='Unknown19',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown20',
+                type='ref|string',
+            ),
+            Field(
                 name='Unknown21',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='Unknown22',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='Unknown23',
-                type='int',
-            ),
-            Field(
-                name='Unknown24',
-                type='int',
-            ),
-            Field(
-                name='Unknown25',
                 type='int',
             ),
             Field(
@@ -7568,15 +7942,11 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown26',
-                type='int',
+                name='Data1',
+                type='ref|list|byte',
             ),
             Field(
-                name='Unknown27',
-                type='int',
-            ),
-            Field(
-                name='Unknown28',
+                name='Unknown24',
                 type='int',
             ),
         ),
@@ -7584,15 +7954,21 @@ specification = Specification({
     'ExpandingPulse.dat': File(
         fields=(
             Field(
+                name='IntId',
+                type='int',
+                unique=True,
+            ),
+            Field(
+                name='StringId',
+                type='ref|string',
+                unique=True,
+            ),
+            Field(
                 name='Data0',
                 type='ref|list|int',
             ),
             Field(
                 name='Data1',
-                type='ref|list|int',
-            ),
-            Field(
-                name='Data2',
                 type='ref|list|float',
             ),
             Field(
@@ -7600,8 +7976,12 @@ specification = Specification({
                 type='ref|list|ulong',
             ),
             Field(
-                name='Key0',
-                type='ulong',
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
             Field(
                 name='Flag0',
@@ -7721,13 +8101,18 @@ specification = Specification({
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Unknown0',
+                name='Tier',
                 type='int',
             ),
             Field(
                 name='NPC',
                 type='ulong',
                 key='ExpeditionNPCs.dat',
+            ),
+            Field(
+                name='LootSound',
+                type='ulong',
+                key='SoundEffects.dat',
             ),
         ),
     ),
@@ -7767,6 +8152,7 @@ specification = Specification({
             Field(
                 name='DealFamily',
                 type='int',
+                key='ExpeditionDealFamilies.dat',
             ),
         ),
     ),
@@ -7914,6 +8300,7 @@ specification = Specification({
             Field(
                 name='Categories',
                 type='ref|list|int',
+                key='ExpeditionRelicModCategories.dat',
             ),
             Field(
                 name='DestroyAchievements',
@@ -7994,6 +8381,10 @@ specification = Specification({
             Field(
                 name='Flag0',
                 type='bool',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -8163,28 +8554,33 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='Data0',
-                type='ref|list|int',
+                name='ArmFiles',
+                type='ref|list|ref|string',
+                file_path=True,
+                file_ext='.arm',
             ),
             Field(
-                name='Data1',
-                type='ref|list|int',
+                name='TdtFiles',
+                type='ref|list|ref|string',
+                file_path=True,
+                file_ext='.tdt',
             ),
             Field(
                 name='Flag0',
                 type='bool',
             ),
             Field(
-                name='Data2',
-                type='ref|list|int',
+                name='Data0',
+                type='ref|list|ref|string',
             ),
             Field(
-                name='Data3',
+                name='Data1',
                 type='ref|list|int',
             ),
             Field(
                 name='Unknown0',
-                type='int',
+                type='ref|generic',
+                key='ExtraTerrainFeatures.dat',
             ),
             Field(
                 name='WorldAreasKey',
@@ -8194,6 +8590,10 @@ specification = Specification({
             Field(
                 name='Flag1',
                 type='bool',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
         ),
     ),
@@ -8226,6 +8626,10 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
                 name='Unknown0',
                 type='int',
             ),
@@ -8239,14 +8643,6 @@ specification = Specification({
             ),
             Field(
                 name='Unknown3',
-                type='int',
-            ),
-            Field(
-                name='Unknown4',
-                type='int',
-            ),
-            Field(
-                name='Unknown5',
                 type='int',
             ),
         ),
@@ -8407,6 +8803,10 @@ specification = Specification({
                 name='Value',
                 type='int',
             ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
         ),
     ),
     'GameStats.dat': File(
@@ -8420,6 +8820,42 @@ specification = Specification({
                 name='Id2',
                 type='ref|string',
                 unique=True,
+            ),
+        ),
+    ),
+    'GamepadButton.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown1',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown2',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown3',
+                type='ref|string',
+            ),
+        ),
+    ),
+    'GamepadType.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Console',
+                type='ref|string',
+            ),
+            Field(
+                name='ImageFile',
+                type='ref|string',
             ),
         ),
     ),
@@ -8524,6 +8960,10 @@ specification = Specification({
                 type='bool',
             ),
             Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
                 name='Unknown9',
                 type='int',
             ),
@@ -8538,10 +8978,6 @@ specification = Specification({
             Field(
                 name='Unknown12',
                 type='int',
-            ),
-            Field(
-                name='Key0',
-                type='ulong',
             ),
             Field(
                 name='Unknown13',
@@ -8580,11 +9016,11 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key1',
+                name='Key0',
                 type='ulong',
             ),
             Field(
-                name='Data0',
+                name='Data1',
                 type='ref|list|int',
             ),
             Field(
@@ -8600,12 +9036,16 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key2',
+                name='Key1',
                 type='ulong',
             ),
             Field(
                 name='Flag9',
                 type='bool',
+            ),
+            Field(
+                name='Data2',
+                type='ref|list|int',
             ),
             Field(
                 name='Flag10',
@@ -8616,6 +9056,10 @@ specification = Specification({
                 type='bool',
             ),
             Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
                 name='Flag12',
                 type='bool',
             ),
@@ -8624,8 +9068,8 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown19',
-                type='int',
+                name='Data3',
+                type='ref|list|byte',
             ),
             Field(
                 name='Flag14',
@@ -8636,11 +9080,11 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key3',
-                type='ulong',
+                name='Flag16',
+                type='bool',
             ),
             Field(
-                name='Flag16',
+                name='Flag17',
                 type='bool',
             ),
         ),
@@ -8786,6 +9230,18 @@ specification = Specification({
                 name='Key1',
                 type='ulong',
             ),
+            Field(
+                name='Flag7',
+                type='bool',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown10',
+                type='int',
+            ),
         ),
     ),
     'GeometryTrigger.dat': File(
@@ -8879,12 +9335,12 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Flag2',
-                type='bool',
-            ),
-            Field(
                 name='Unknown18',
                 type='int',
+            ),
+            Field(
+                name='Flag2',
+                type='bool',
             ),
             Field(
                 name='Unknown19',
@@ -8935,12 +9391,28 @@ specification = Specification({
                 type='bool',
             ),
             Field(
+                name='Flag9',
+                type='bool',
+            ),
+            Field(
+                name='Flag10',
+                type='bool',
+            ),
+            Field(
                 name='Unknown23',
                 type='int',
             ),
             Field(
                 name='Unknown24',
                 type='int',
+            ),
+            Field(
+                name='Keys1',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
             ),
             Field(
                 name='Unknown25',
@@ -8954,17 +9426,25 @@ specification = Specification({
                 name='Unknown27',
                 type='int',
             ),
+        ),
+    ),
+    'GiftWrapArtVariations.dat': File(
+        fields=(
             Field(
-                name='Unknown28',
+                name='Unknown0',
                 type='int',
             ),
             Field(
-                name='Flag9',
-                type='bool',
+                name='Unknown1',
+                type='int',
             ),
             Field(
-                name='Flag10',
-                type='bool',
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -9141,7 +9621,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='ActiveSkillsKey',
+                name='ActiveSkill',
                 type='ulong',
                 key='ActiveSkills.dat',
             ),
@@ -9171,12 +9651,12 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='ItemClasses',
+                name='SupportWeaponRestrictions',
                 type='ref|list|ulong',
                 key='ItemClasses.dat',
             ),
             Field(
-                name='GrantedEffectsKey',
+                name='GrantedEffect',
                 type='ref|generic',
                 key='GrantedEffects.dat',
             ),
@@ -9280,7 +9760,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='ManaMultiplier',
+                name='CostMultiplier',
                 type='int',
             ),
             Field(
@@ -9311,6 +9791,8 @@ specification = Specification({
             Field(
                 name='CooldownBypassType',
                 type='int',
+                key='CooldownBypassTypes.dat',
+                enum='CooldownBypassTypes',
             ),
             Field(
                 name='StatsKeys2',
@@ -9485,46 +9967,30 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Flag0',
-                type='bool',
-            ),
-            Field(
-                name='Flag1',
-                type='bool',
-            ),
-            Field(
                 name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Flag2',
-                type='bool',
-            ),
-            Field(
-                name='Flag3',
-                type='bool',
-            ),
-            Field(
-                name='AOFile',
-                type='ref|string',
-                file_path=True,
-                file_ext='.ao',
-            ),
-            Field(
-                name='Flag4',
-                type='bool',
+                type='float',
             ),
             Field(
                 name='Data0',
                 type='ref|list|int',
             ),
             Field(
-                name='Data1',
-                type='ref|list|int',
+                name='Flag0',
+                type='bool',
             ),
             Field(
-                name='Unknown3',
-                type='int',
+                name='AOFile',
+                type='ref|list|ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|ref|string',
+            ),
+            Field(
+                name='EndEffect',
+                type='ref|string',
             ),
             Field(
                 name='Key1',
@@ -9547,15 +10013,27 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Flag5',
+                name='Flag1',
                 type='bool',
             ),
             Field(
-                name='Flag6',
+                name='Flag2',
                 type='bool',
             ),
             Field(
-                name='Flag7',
+                name='Flag3',
+                type='bool',
+            ),
+            Field(
+                name='Key6',
+                type='ulong',
+            ),
+            Field(
+                name='Key7',
+                type='ulong',
+            ),
+            Field(
+                name='Flag4',
                 type='bool',
             ),
         ),
@@ -9612,18 +10090,8 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Unknown0',
-                type='int',
-            ),
-            Field(
-                name='HarvestObjectsKey',
+                name='Key0',
                 type='ulong',
-                key='HarvestObjects.dat',
-            ),
-            Field(
-                name='HarvestCraftTiersKey',
-                type='ulong',
-                key='HarvestCraftTiers.dat',
             ),
             Field(
                 name='Command',
@@ -9643,7 +10111,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown1',
+                name='Unknown0',
                 type='int',
             ),
             Field(
@@ -9652,9 +10120,22 @@ specification = Specification({
                 key='HarvestCraftOptionIcons.dat',
             ),
             Field(
-                name='PlainText',
+                name='Description',
                 type='ref|string',
-                description='Text without any tags for formatting',
+            ),
+            Field(
+                name='DDSFile',
+                type='ref|string',
+                file_path=True,
+                file_ext='.dds',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Flag2',
+                type='bool',
             ),
         ),
     ),
@@ -9774,34 +10255,6 @@ specification = Specification({
                 name='Unknown4',
                 type='int',
             ),
-            Field(
-                name='Unknown5',
-                type='int',
-            ),
-            Field(
-                name='Unknown6',
-                type='int',
-            ),
-            Field(
-                name='Unknown7',
-                type='int',
-            ),
-            Field(
-                name='Unknown8',
-                type='int',
-            ),
-            Field(
-                name='Unknown9',
-                type='int',
-            ),
-            Field(
-                name='Unknown10',
-                type='int',
-            ),
-            Field(
-                name='Unknown11',
-                type='int',
-            ),
         ),
     ),
     'HarvestPlantBoosters.dat': File(
@@ -9916,6 +10369,67 @@ specification = Specification({
             ),
             Field(
                 name='OutcomeType',
+                type='int',
+            ),
+        ),
+    ),
+    'HarvestSeeds.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Monster',
+                type='ulong',
+                key='MonsterVarieties.dat',
+            ),
+            Field(
+                name='Tier',
+                type='int',
+            ),
+            Field(
+                name='Description',
+                type='ref|string',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='SeedAnimation',
+                type='ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='HatchAnimation',
+                type='ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='SeedType',
                 type='int',
             ),
         ),
@@ -10264,7 +10778,8 @@ specification = Specification({
             ),
             Field(
                 name='Unknown0',
-                type='int',
+                type='ref|generic',
+                key='HeistChestRewardTypes.dat',
             ),
             Field(
                 name='RewardRoomName',
@@ -10316,6 +10831,7 @@ specification = Specification({
             Field(
                 name='HeistChestTypesKey',
                 type='int',
+                key='HeistChestTypes.dat',
             ),
         ),
     ),
@@ -10324,6 +10840,7 @@ specification = Specification({
             Field(
                 name='Key0',
                 type='ulong',
+                key='MonsterVarieties.dat',
             ),
             Field(
                 name='Unknown0',
@@ -10336,10 +10853,12 @@ specification = Specification({
             Field(
                 name='Keys0',
                 type='ref|list|ulong',
+                key='GrantedEffects.dat',
             ),
             Field(
                 name='Key1',
                 type='ulong',
+                key='GrantedEffects.dat',
             ),
             Field(
                 name='Unknown1',
@@ -10448,7 +10967,6 @@ specification = Specification({
             Field(
                 name='Id',
                 type='ref|string',
-                unique=True,
             ),
             Field(
                 name='Unknown0',
@@ -10702,6 +11220,14 @@ specification = Specification({
                 type='ulong',
                 key='Stats.dat',
             ),
+            Field(
+                name='ConsoleBlueprintLegend',
+                type='ref|string',
+            ),
+            Field(
+                name='Description',
+                type='ref|string',
+            ),
         ),
     ),
     'HeistJobsExperiencePerLevel.dat': File(
@@ -10751,13 +11277,14 @@ specification = Specification({
     'HeistNPCAuras.dat': File(
         fields=(
             Field(
-                name='StatsKey',
+                name='Stat',
                 type='ulong',
                 key='Stats.dat',
             ),
             Field(
-                name='Key0',
+                name='GrantedEffect',
                 type='ulong',
+                key='GrantedEffects.dat',
             ),
         ),
     ),
@@ -10870,19 +11397,15 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Unknown1',
-                type='int',
-            ),
-            Field(
                 name='SilhouetteFile',
                 type='ref|string',
             ),
             Field(
-                name='Unknown2',
+                name='Unknown1',
                 type='int',
             ),
             Field(
-                name='Unknown3',
+                name='Unknown2',
                 type='int',
             ),
             Field(
@@ -10919,21 +11442,25 @@ specification = Specification({
                 file_path=True,
                 file_ext='.ao',
             ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
         ),
     ),
     'HeistObjectiveValueDescriptions.dat': File(
         fields=(
             Field(
-                name='Unknown0',
+                name='Tier',
                 type='int',
             ),
             Field(
-                name='Unknown1',
-                type='int',
+                name='MarkersMultiply',
+                type='float',
             ),
             Field(
-                name='Unknown2',
-                type='int',
+                name='Description',
+                type='ref|string',
             ),
         ),
     ),
@@ -11188,7 +11715,7 @@ specification = Specification({
             ),
             Field(
                 name='Unknown3',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='Unknown4',
@@ -11345,14 +11872,17 @@ specification = Specification({
             Field(
                 name='Key0',
                 type='ulong',
+                key='Environments.dat',
             ),
             Field(
                 name='Key1',
                 type='ulong',
+                key='Environments.dat',
             ),
             Field(
                 name='Keys0',
                 type='ref|list|ulong',
+                key='Environments.dat',
             ),
             Field(
                 name='Unknown0',
@@ -11361,6 +11891,7 @@ specification = Specification({
             Field(
                 name='Keys1',
                 type='ref|list|ulong',
+                key='MonsterVarieties.dat',
             ),
             Field(
                 name='Unknown1',
@@ -11369,16 +11900,18 @@ specification = Specification({
                 file_ext='.ao',
             ),
             Field(
-                name='Key2',
+                name='Boss',
                 type='ulong',
+                key='MonsterVarieties.dat',
             ),
         ),
     ),
     'HellscapeImmuneMonsters.dat': File(
         fields=(
             Field(
-                name='Key0',
+                name='Monster',
                 type='ulong',
+                key='MonsterVarieties.dat',
             ),
         ),
     ),
@@ -11422,11 +11955,11 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='Unknown0',
+                name='Column',
                 type='int',
             ),
             Field(
-                name='Unknown1',
+                name='Row',
                 type='int',
             ),
             Field(
@@ -11434,7 +11967,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown2',
+                name='Unknown0',
                 type='int',
             ),
             Field(
@@ -11455,12 +11988,14 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Key0',
+                name='UnlockedWith',
                 type='ulong',
+                key='HellscapePassives.dat',
             ),
             Field(
-                name='Key1',
+                name='Quest',
                 type='ulong',
+                key='Quest.dat',
             ),
         ),
     ),
@@ -11472,13 +12007,17 @@ specification = Specification({
                 key='Mods.dat',
             ),
             Field(
-                name='Data0',
+                name='TiersWhitelist',
                 type='ref|list|int',
             ),
             Field(
                 name='TransformAchievement',
                 type='ulong',
                 key='AchievementItems.dat',
+            ),
+            Field(
+                name='CorrectGroups',
+                type='ref|list|ref|string',
             ),
         ),
     ),
@@ -11572,16 +12111,34 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Key0',
+                name='SoundEffect',
                 type='ulong',
+                key='SoundEffects.dat',
             ),
             Field(
                 name='Unknown0',
                 type='int',
             ),
             Field(
-                name='Key1',
+                name='Quest',
                 type='ulong',
+                key='Quest.dat',
+            ),
+        ),
+    ),
+    'HideoutDoodadTags.dat': File(
+        fields=(
+            Field(
+                name='Type',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
             ),
         ),
     ),
@@ -11767,6 +12324,18 @@ specification = Specification({
                 name='Flag1',
                 type='bool',
             ),
+            Field(
+                name='Flag2',
+                type='bool',
+            ),
+            Field(
+                name='Flag3',
+                type='bool',
+            ),
+            Field(
+                name='Flag4',
+                type='bool',
+            ),
         ),
     ),
     'ImpactSoundData.dat': File(
@@ -11939,12 +12508,13 @@ specification = Specification({
     'IncursionRoomBossFightEvents.dat': File(
         fields=(
             Field(
-                name='Unknown0',
-                type='int',
+                name='Room',
+                type='ulong',
+                key='IncursionRooms.dat',
             ),
             Field(
-                name='Data0',
-                type='ref|list|int',
+                name='Unknown0',
+                type='ref|string',
             ),
             Field(
                 name='Unknown1',
@@ -12055,6 +12625,10 @@ specification = Specification({
                 type='ref|generic',
                 key='IncursionRooms.dat',
             ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
         ),
     ),
     'IncursionUniqueUpgradeComponents.dat': File(
@@ -12117,6 +12691,25 @@ specification = Specification({
             Field(
                 name='Flag0',
                 type='bool',
+            ),
+        ),
+    ),
+    'InfluenceTags.dat': File(
+        fields=(
+            Field(
+                name='ItemClass',
+                type='ulong',
+                key='ItemClasses.dat',
+            ),
+            Field(
+                name='Influence',
+                type='int',
+                key='InfluenceTypes.dat',
+            ),
+            Field(
+                name='Tag',
+                type='ulong',
+                key='Tags.dat',
             ),
         ),
     ),
@@ -12195,10 +12788,12 @@ specification = Specification({
             Field(
                 name='InventoryIdKey',
                 type='int',
+                key='InventoryId.dat',
             ),
             Field(
                 name='InventoryTypeKey',
                 type='int',
+                key='InventoryType.dat',
             ),
             Field(
                 name='Unknown0',
@@ -12211,10 +12806,6 @@ specification = Specification({
             Field(
                 name='Flag1',
                 type='bool',
-            ),
-            Field(
-                name='Unknown1',
-                type='int',
             ),
             Field(
                 name='Flag2',
@@ -12346,39 +12937,56 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Cost1_BaseItemTypesKeys',
+                name='Cost',
+                type='ulong',
+                key='ItemCosts.dat',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+        ),
+    ),
+    'ItemCosts.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Cost1Currencies',
                 type='ref|list|ulong',
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Cost1_Values',
+                name='Cost1Values',
                 type='ref|list|int',
             ),
             Field(
-                name='Cost2_BaseItemTypesKeys',
+                name='Cost2Currencies',
                 type='ref|list|ulong',
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Cost2_Values',
+                name='Cost2Values',
                 type='ref|list|int',
             ),
             Field(
-                name='Cost3_BaseItemTypesKeys',
+                name='Cost3Currencies',
                 type='ref|list|ulong',
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Cost3_Values',
+                name='Cost3Values',
                 type='ref|list|int',
             ),
             Field(
-                name='Cost4_BaseItemTypesKeys',
+                name='Cost4Currencies',
                 type='ref|list|ulong',
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Cost4_Values',
+                name='Cost4Values',
                 type='ref|list|int',
             ),
         ),
@@ -12903,20 +13511,12 @@ specification = Specification({
     'JobAssassinationSpawnerGroups.dat': File(
         fields=(
             Field(
-                name='Unknown0',
-                type='int',
+                name='Key0',
+                type='ulong',
             ),
             Field(
-                name='Unknown1',
-                type='int',
-            ),
-            Field(
-                name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Unknown3',
-                type='int',
+                name='Key1',
+                type='ulong',
             ),
         ),
     ),
@@ -13320,6 +13920,10 @@ specification = Specification({
                 name='Unknown4',
                 type='ref|string',
             ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
         ),
     ),
     'LabyrinthTrinkets.dat': File(
@@ -13422,6 +14026,14 @@ specification = Specification({
                 name='Image',
                 type='ref|string',
             ),
+            Field(
+                name='IsHC',
+                type='bool',
+            ),
+            Field(
+                name='IsSSF',
+                type='bool',
+            ),
         ),
     ),
     'LeagueInfo.dat': File(
@@ -13473,6 +14085,10 @@ specification = Specification({
             ),
             Field(
                 name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Flag2',
                 type='bool',
             ),
         ),
@@ -13910,8 +14526,24 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='ArtFile',
-                type='ref|string',
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Keys1',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Keys2',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Keys3',
+                type='ref|list|ulong',
             ),
         ),
     ),
@@ -13997,12 +14629,8 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown4',
-                type='int',
-            ),
-            Field(
-                name='RestrictedAreaMessage',
-                type='ref|string',
+                name='Data0',
+                type='ref|list|byte',
             ),
         ),
     ),
@@ -14057,6 +14685,22 @@ specification = Specification({
                 name='IsLegionMap',
                 type='bool',
             ),
+            Field(
+                name='IsShaperOrElderFight',
+                type='bool',
+            ),
+            Field(
+                name='IsMavenFight',
+                type='bool',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
         ),
     ),
     'MapDevices.dat': File(
@@ -14075,22 +14719,32 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Unknown1',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown2',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
                 name='Flag0',
                 type='bool',
             ),
             Field(
-                name='InheritsFrom',
-                type='ref|string',
-                file_path=True,
-                file_ext='.ot, .otc',
+                name='Unknown3',
+                type='int',
             ),
             Field(
-                name='Command',
-                type='ref|string',
+                name='Flag1',
+                type='bool',
             ),
             Field(
-                name='Command_Data',
-                type='ref|list|int',
+                name='Flag2',
+                type='bool',
             ),
         ),
     ),
@@ -14131,6 +14785,14 @@ specification = Specification({
             ),
             Field(
                 name='Flag3',
+                type='bool',
+            ),
+            Field(
+                name='Flag4',
+                type='bool',
+            ),
+            Field(
+                name='Flag5',
                 type='bool',
             ),
         ),
@@ -14214,62 +14876,13 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='NormalPurchase_BaseItemTypesKeys',
-                type='ref|list|ulong',
-                key='BaseItemTypes.dat',
+                name='Cost',
+                type='ulong',
+                key='ItemCosts.dat',
             ),
             Field(
-                name='NormalPurchase_Costs',
-                type='ref|list|int',
-            ),
-            Field(
-                name='MagicPurchase_BaseItemTypesKeys',
-                type='ref|list|ulong',
-                key='BaseItemTypes.dat',
-            ),
-            Field(
-                name='MagicPurchase_Costs',
-                type='ref|list|int',
-            ),
-            Field(
-                name='RarePurchase_BaseItemTypesKeys',
-                type='ref|list|ulong',
-                key='BaseItemTypes.dat',
-            ),
-            Field(
-                name='RarePurchase_Costs',
-                type='ref|list|int',
-            ),
-            Field(
-                name='UniquePurchase_BaseItemTypesKeys',
-                type='ref|list|ulong',
-                key='BaseItemTypes.dat',
-            ),
-            Field(
-                name='UniquePurchase_Costs',
-                type='ref|list|int',
-            ),
-        ),
-        virtual_fields=(
-            VirtualField(
-                name='NormalPurchase',
-                fields=('NormalPurchase_BaseItemTypesKeys', 'NormalPurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='MagicPurchase',
-                fields=('MagicPurchase_BaseItemTypesKeys', 'MagicPurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='RarePurchase',
-                fields=('RarePurchase_BaseItemTypesKeys', 'RarePurchase_Costs'),
-                zip=True,
-            ),
-            VirtualField(
-                name='UniquePurchase',
-                fields=('UniquePurchase_BaseItemTypesKeys', 'UniquePurchase_Costs'),
-                zip=True,
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -14310,6 +14923,18 @@ specification = Specification({
             ),
             Field(
                 name='Drawn_DDSFile',
+                type='ref|string',
+                file_path=True,
+                file_ext='.dds',
+            ),
+            Field(
+                name='Delirious_DDSFile',
+                type='ref|string',
+                file_path=True,
+                file_ext='.dds',
+            ),
+            Field(
+                name='UberBlight_DDSFile',
                 type='ref|string',
                 file_path=True,
                 file_ext='.dds',
@@ -14357,6 +14982,18 @@ specification = Specification({
             ),
             Field(
                 name='HeistTier',
+                type='int',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
                 type='int',
             ),
         ),
@@ -14413,10 +15050,6 @@ specification = Specification({
             ),
             Field(
                 name='Level',
-                type='int',
-            ),
-            Field(
-                name='Unknown0',
                 type='int',
             ),
         ),
@@ -14501,6 +15134,10 @@ specification = Specification({
             ),
             Field(
                 name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Flag2',
                 type='bool',
             ),
         ),
@@ -14911,6 +15548,10 @@ specification = Specification({
                 key='Mods.dat',
             ),
             Field(
+                name='Name',
+                type='ref|string',
+            ),
+            Field(
                 name='Unknown2',
                 type='int',
             ),
@@ -15014,6 +15655,10 @@ specification = Specification({
             Field(
                 name='Unknown0',
                 type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
             ),
         ),
     ),
@@ -15129,6 +15774,23 @@ specification = Specification({
             ),
         ),
     ),
+    'MicrotransactionCursorVariations.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+        ),
+    ),
     'MicrotransactionFireworksVariations.dat': File(
         fields=(
             Field(
@@ -15145,6 +15807,19 @@ specification = Specification({
             Field(
                 name='Flag0',
                 type='bool',
+            ),
+        ),
+    ),
+    'MicrotransactionGemCategory.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='Id',
+                type='ref|string',
             ),
         ),
     ),
@@ -15176,6 +15851,11 @@ specification = Specification({
                 key='BaseItemTypes.dat',
             ),
             Field(
+                name='Id',
+                type='int',
+                unique=True,
+            ),
+            Field(
                 name='AOFile',
                 type='ref|string',
                 file_path=True,
@@ -15195,6 +15875,46 @@ specification = Specification({
                 name='MiscObject',
                 type='ulong',
                 key='MiscObjects.dat',
+            ),
+            Field(
+                name='PortalEffect',
+                type='ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='Unknown1',
+                type='float',
+            ),
+            Field(
+                name='Unknown2',
+                type='ref|string',
+            ),
+            Field(
+                name='PortalEffectLarge',
+                type='ref|string',
+                file_path=True,
+                file_ext='.ao',
+            ),
+            Field(
+                name='Unknown3',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown4',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown5',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown6',
+                type='int',
+            ),
+            Field(
+                name='Unknown7',
+                type='int',
             ),
         ),
     ),
@@ -15257,6 +15977,22 @@ specification = Specification({
                 type='ref|string',
                 file_path=True,
                 file_ext='.bk2',
+            ),
+        ),
+    ),
+    'MiniQuestStates.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|byte',
             ),
         ),
     ),
@@ -15324,6 +16060,30 @@ specification = Specification({
             ),
         ),
     ),
+    'MiscAnimatedArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+        ),
+    ),
     'MiscBeams.dat': File(
         fields=(
             Field(
@@ -15348,6 +16108,30 @@ specification = Specification({
             Field(
                 name='Unknown1',
                 type='int',
+            ),
+        ),
+    ),
+    'MiscBeamsArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -15393,6 +16177,22 @@ specification = Specification({
             ),
         ),
     ),
+    'MiscEffectPacksArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+        ),
+    ),
     'MiscObjects.dat': File(
         fields=(
             Field(
@@ -15421,6 +16221,30 @@ specification = Specification({
             ),
         ),
     ),
+    'MiscObjectsArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+        ),
+    ),
     'MissionFavourPerLevel.dat': File(
         fields=(
             Field(
@@ -15446,6 +16270,22 @@ specification = Specification({
             Field(
                 name='BackgroundImage',
                 type='ref|string',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|float',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
             ),
         ),
     ),
@@ -15535,26 +16375,7 @@ specification = Specification({
             Field(
                 name='Id',
                 type='ref|string',
-            ),
-        ),
-    ),
-    'ModSets.dat': File(
-        fields=(
-            Field(
-                name='Unknown0',
-                type='ref|string',
-            ),
-            Field(
-                name='Unknown1',
-                type='int',
-            ),
-            Field(
-                name='Key0',
-                type='ulong',
-            ),
-            Field(
-                name='Unknown2',
-                type='int',
+                unique=True,
             ),
         ),
     ),
@@ -15615,6 +16436,7 @@ specification = Specification({
             Field(
                 name='Domain',
                 type='int',
+                key='ModDomains.dat',
                 enum='MOD_DOMAIN',
             ),
             Field(
@@ -15624,6 +16446,7 @@ specification = Specification({
             Field(
                 name='GenerationType',
                 type='int',
+                key='ModGenerationType.dat',
                 enum='MOD_GENERATION_TYPE',
             ),
             Field(
@@ -15690,12 +16513,14 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Keys0',
+                name='MonsterKillAchievements',
                 type='ref|list|ulong',
+                key='AchievementItems.dat',
             ),
             Field(
-                name='Keys1',
+                name='ChestModType',
                 type='ref|list|ulong',
+                key='ModType.dat',
             ),
             Field(
                 name='Stat5Min',
@@ -15730,8 +16555,9 @@ specification = Specification({
                 type='ref|list|int',
             ),
             Field(
-                name='Data1',
-                type='ref|list|byte',
+                name='ModifyMapsAchievements',
+                type='ref|list|ulong',
+                key='AchievementItems.dat',
             ),
             Field(
                 name='IsEssenceOnlyModifier',
@@ -15759,7 +16585,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Keys2',
+                name='CraftingItemClassRestrictions',
                 type='ref|list|ulong',
                 key='ItemClasses.dat',
             ),
@@ -15772,7 +16598,7 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Keys3',
+                name='Keys0',
                 type='ref|list|ulong',
                 key='GrantedEffectsPerLevel.dat',
             ),
@@ -15805,6 +16631,7 @@ specification = Specification({
             Field(
                 name='InfluenceTypes',
                 type='int',
+                key='InfluenceTypes.dat',
             ),
             Field(
                 name='ImplicitTagsKeys',
@@ -15960,12 +16787,8 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Unknown0',
-                type='int',
-            ),
-            Field(
-                name='Unknown1',
-                type='int',
+                name='Data0',
+                type='ref|list|int',
             ),
             Field(
                 name='StatsKeys',
@@ -16018,16 +16841,16 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Unknown0',
-                type='int',
-            ),
-            Field(
                 name='Key0',
                 type='ulong',
             ),
             Field(
-                name='Unknown1',
-                type='int',
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
             ),
             Field(
                 name='Keys0',
@@ -16047,10 +16870,22 @@ specification = Specification({
             ),
             Field(
                 name='Data0',
-                type='ref|list|int',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
             Field(
                 name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
                 type='int',
             ),
         ),
@@ -16261,6 +17096,18 @@ specification = Specification({
                 type='ulong',
                 key='BuffVisuals.dat',
             ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
         ),
     ),
     'MonsterHeights.dat': File(
@@ -16278,6 +17125,14 @@ specification = Specification({
                 name='MonsterHeightBracket',
                 type='ulong',
                 key='MonsterHeightBrackets.dat',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
             ),
         ),
     ),
@@ -16470,10 +17325,6 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Flag4',
-                type='bool',
-            ),
-            Field(
                 name='Unknown2',
                 type='int',
             ),
@@ -16482,19 +17333,19 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Flag4',
+                type='bool',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
                 name='Flag5',
                 type='bool',
             ),
             Field(
                 name='Flag6',
-                type='bool',
-            ),
-            Field(
-                name='Flag7',
-                type='bool',
-            ),
-            Field(
-                name='Flag8',
                 type='bool',
             ),
         ),
@@ -17291,6 +18142,38 @@ specification = Specification({
             ),
         ),
     ),
+    'MonsterVarietiesArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+        ),
+    ),
+    'MouseCursorSizeSettings.dat': File(
+        fields=(
+            Field(
+                name='Size',
+                type='ref|string',
+            ),
+            Field(
+                name='Description',
+                type='ref|string',
+            ),
+            Field(
+                name='Ratio',
+                type='float',
+            ),
+        ),
+    ),
     'MoveDaemon.dat': File(
         fields=(
             Field(
@@ -17394,16 +18277,16 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Flag3',
+                type='bool',
+            ),
+            Field(
                 name='Unknown21',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='Unknown22',
                 type='int',
-            ),
-            Field(
-                name='Flag3',
-                type='bool',
             ),
             Field(
                 name='Flag4',
@@ -17412,6 +18295,10 @@ specification = Specification({
             Field(
                 name='Flag5',
                 type='bool',
+            ),
+            Field(
+                name='Unknown23',
+                type='int',
             ),
         ),
     ),
@@ -17525,7 +18412,7 @@ specification = Specification({
             ),
             Field(
                 name='Unknown1',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='MusicCategories',
@@ -17622,8 +18509,9 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Key0',
+                name='DialogueEvent',
                 type='ulong',
+                key='DialogueEvent.dat',
             ),
             Field(
                 name='NPCTextAudioKeys',
@@ -17868,6 +18756,7 @@ specification = Specification({
             Field(
                 name='Key2',
                 type='ulong',
+                key='Stats.dat',
             ),
         ),
     ),
@@ -17982,8 +18871,9 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown2',
-                type='int',
+                name='Key0',
+                type='ulong',
+                key='NPCTalkCategory.dat',
             ),
             Field(
                 name='QuestKey',
@@ -17991,7 +18881,7 @@ specification = Specification({
                 key='Quest.dat',
             ),
             Field(
-                name='Unknown3',
+                name='Unknown2',
                 type='int',
             ),
             Field(
@@ -18020,7 +18910,7 @@ specification = Specification({
                 type='ref|list|int',
             ),
             Field(
-                name='Unknown4',
+                name='Unknown3',
                 type='int',
             ),
             Field(
@@ -18028,7 +18918,7 @@ specification = Specification({
                 type='ref|list|int',
             ),
             Field(
-                name='Unknown5',
+                name='Unknown4',
                 type='int',
             ),
             Field(
@@ -18040,7 +18930,7 @@ specification = Specification({
                 type='ref|list|ulong',
             ),
             Field(
-                name='Key0',
+                name='Key1',
                 type='ulong',
             ),
             Field(
@@ -18056,24 +18946,36 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='Key1',
+                name='Key2',
                 type='ulong',
             ),
             Field(
-                name='Key2',
+                name='Key3',
                 type='ulong',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Data6',
+                type='ref|list|int',
             ),
             Field(
                 name='Unknown6',
                 type='int',
             ),
+        ),
+    ),
+    'NPCTalkCategory.dat': File(
+        fields=(
             Field(
-                name='Unknown7',
-                type='int',
+                name='Unknown0',
+                type='ref|string',
             ),
             Field(
-                name='Unknown8',
-                type='int',
+                name='Flag0',
+                type='bool',
             ),
         ),
     ),
@@ -18085,6 +18987,10 @@ specification = Specification({
             ),
             Field(
                 name='Controller',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
                 type='ref|string',
             ),
         ),
@@ -18142,20 +19048,12 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown3',
-                type='int',
+                name='Keys0',
+                type='ref|list|ulong',
             ),
             Field(
-                name='Unknown4',
-                type='int',
-            ),
-            Field(
-                name='Unknown5',
-                type='int',
-            ),
-            Field(
-                name='Unknown6',
-                type='int',
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -18332,6 +19230,30 @@ specification = Specification({
                 name='GameStat',
                 type='ulong',
                 key='GameStats.dat',
+            ),
+        ),
+    ),
+    'PCBangRewardMicros.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+        ),
+    ),
+    'PVPTypes.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -18520,12 +19442,12 @@ specification = Specification({
     'PassiveJewelSlots.dat': File(
         fields=(
             Field(
-                name='PassiveSkillsKey',
+                name='Slot',
                 type='ulong',
                 key='PassiveSkills.dat',
             ),
             Field(
-                name='PassiveTreeExpansionJewelSize',
+                name='ClusterJewelSize',
                 type='ulong',
                 key='PassiveTreeExpansionJewelSizes.dat',
             ),
@@ -18534,13 +19456,14 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='PassiveJewelSlotsKey',
+                name='ReplacesSlot',
                 type='ref|generic',
                 key='PassiveJewelSlots.dat',
             ),
             Field(
-                name='Key0',
+                name='ProxySlot',
                 type='ulong',
+                key='PassiveSkills.dat',
             ),
             Field(
                 name='Data0',
@@ -18585,11 +19508,11 @@ specification = Specification({
     'PassiveSkillMasteryEffects.dat': File(
         fields=(
             Field(
-                name='ID',
+                name='Id',
                 type='ref|string',
             ),
             Field(
-                name='hash',
+                name='HASH16',
                 type='int',
             ),
             Field(
@@ -18614,7 +19537,7 @@ specification = Specification({
     'PassiveSkillMasteryGroups.dat': File(
         fields=(
             Field(
-                name='ID',
+                name='Id',
                 type='ref|string',
             ),
             Field(
@@ -18625,10 +19548,14 @@ specification = Specification({
             Field(
                 name='InactiveIcon',
                 type='ref|string',
+                file_path=True,
+                file_ext='.dds',
             ),
             Field(
                 name='ActiveIcon',
                 type='ref|string',
+                file_path=True,
+                file_ext='.dds',
             ),
             Field(
                 name='ActiveEffectImage',
@@ -18639,8 +19566,9 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key0',
+                name='SoundEffect',
                 type='ulong',
+                key='SoundEffects.dat',
             ),
         ),
     ),
@@ -18699,6 +19627,74 @@ specification = Specification({
             Field(
                 name='Key3',
                 type='ulong',
+            ),
+        ),
+    ),
+    'PassiveSkillTrees.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='PassiveSkillGraph',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Flag2',
+                type='bool',
+            ),
+            Field(
+                name='Flag3',
+                type='bool',
+            ),
+            Field(
+                name='Flag4',
+                type='bool',
+            ),
+            Field(
+                name='Flag5',
+                type='bool',
+            ),
+            Field(
+                name='Flag6',
+                type='bool',
+            ),
+            Field(
+                name='Flag7',
+                type='bool',
+            ),
+            Field(
+                name='Flag8',
+                type='bool',
+            ),
+            Field(
+                name='Flag9',
+                type='bool',
             ),
         ),
     ),
@@ -18835,6 +19831,7 @@ specification = Specification({
             Field(
                 name='SkillType',
                 type='int',
+                key='PassiveSkillTypes.dat',
             ),
             Field(
                 name='MasteryGroup',
@@ -18859,6 +19856,7 @@ specification = Specification({
             Field(
                 name='Name',
                 type='ref|string',
+                unique=True,
             ),
         ),
     ),
@@ -19101,6 +20099,10 @@ specification = Specification({
                 name='Flag1',
                 type='bool',
             ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
         ),
     ),
     'PlayerConditions.dat': File(
@@ -19245,7 +20247,7 @@ specification = Specification({
             ),
             Field(
                 name='Stuck_AOFile',
-                type='ref|string',
+                type='ref|list|ref|string',
                 file_path=True,
                 file_ext='.ao',
             ),
@@ -19300,20 +20302,40 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Keys0',
-                type='ref|list|ulong',
-            ),
-            Field(
-                name='Key3',
-                type='ulong',
+                name='Data0',
+                type='ref|list|ref|string',
             ),
             Field(
                 name='Flag5',
                 type='bool',
             ),
             Field(
-                name='Unknown12',
+                name='Key3',
+                type='ulong',
+            ),
+        ),
+    ),
+    'ProjectilesArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Projectile',
+                type='ref|string',
+            ),
+            Field(
+                name='Variant',
                 type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
             ),
         ),
     ),
@@ -19533,6 +20555,10 @@ specification = Specification({
                 name='Key0',
                 type='ulong',
             ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
         ),
     ),
     'QuestRewardOffers.dat': File(
@@ -19556,6 +20582,89 @@ specification = Specification({
             ),
             Field(
                 name='Unknown1',
+                type='int',
+            ),
+        ),
+    ),
+    'QuestRewards.dat': File(
+        fields=(
+            Field(
+                name='RewardOffer',
+                type='ulong',
+                key='QuestRewardOffers.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Character',
+                type='ulong',
+                key='Characters.dat',
+            ),
+            Field(
+                name='Reward',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='RewardLevel',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='ref|string',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='RewardStack',
+                type='int',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Data2',
+                type='ref|list|byte',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown6',
                 type='int',
             ),
         ),
@@ -19622,20 +20731,17 @@ specification = Specification({
                 type='ref|list|int',
             ),
             Field(
-                name='QuestStateCalcuationKey',
-                type='int',
-            ),
-            Field(
-                name='Key0',
-                type='ulong',
+                name='Data2',
+                type='ref|list|int',
             ),
             Field(
                 name='Unknown2',
                 type='int',
             ),
             Field(
-                name='Unknown3',
-                type='int',
+                name='SoundEffect',
+                type='ulong',
+                key='SoundEffects.dat',
             ),
         ),
     ),
@@ -19791,6 +20897,42 @@ specification = Specification({
             ),
         ),
     ),
+    'Rarity.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Unknown6',
+                type='ref|string',
+            ),
+        ),
+    ),
     'Realms.dat': File(
         fields=(
             Field(
@@ -19820,11 +20962,13 @@ specification = Specification({
             ),
             Field(
                 name='Data0',
-                type='ref|list|int',
+                type='ref|list|ref|generic',
+                key='Realms.dat',
             ),
             Field(
                 name='Unknown0',
-                type='int',
+                type='ref|generic',
+                key='Realms.dat',
             ),
             Field(
                 name='Unknown1',
@@ -19835,8 +20979,8 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Data1',
-                type='ref|list|int',
+                name='SpeedtestUrl',
+                type='ref|list|ref|string',
             ),
         ),
     ),
@@ -19865,8 +21009,9 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Key0',
+                name='UnlockArea',
                 type='ulong',
+                key='WorldAreas.dat',
             ),
         ),
     ),
@@ -20097,6 +21242,10 @@ specification = Specification({
                 name='Flag0',
                 type='bool',
             ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
         ),
     ),
     'Rulesets.dat': File(
@@ -20106,28 +21255,28 @@ specification = Specification({
                 type='ref|string',
                 unique=True,
             ),
+            Field(
+                name='Data0',
+                type='ref|list|byte',
+            ),
         ),
     ),
     'RunicCircles.dat': File(
         fields=(
             Field(
                 name='Unknown0',
-                type='int',
+                type='ref|string',
             ),
             Field(
                 name='Unknown1',
                 type='int',
             ),
             Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
                 name='Unknown2',
-                type='int',
-            ),
-            Field(
-                name='Unknown3',
-                type='int',
-            ),
-            Field(
-                name='Unknown4',
                 type='int',
             ),
         ),
@@ -20145,9 +21294,8 @@ specification = Specification({
                 key='BetrayalTargets.dat',
             ),
             Field(
-                name='BetrayalRanksKey',
-                type='ulong',
-                key='BetrayalRanks.dat',
+                name='Rank',
+                type='int',
             ),
             Field(
                 name='Description',
@@ -20171,12 +21319,11 @@ specification = Specification({
                 key='BetrayalJobs.dat',
             ),
             Field(
-                name='BetrayalRanksKey',
-                type='ulong',
-                key='BetrayalRanks.dat',
+                name='Rank',
+                type='int',
             ),
             Field(
-                name='Currency_Values',
+                name='CurrencyCount',
                 type='ref|list|int',
             ),
             Field(
@@ -20189,8 +21336,8 @@ specification = Specification({
                 key='SafehouseCraftingSpreeCurrencies.dat',
             ),
             Field(
-                name='Data0',
-                type='ref|list|int',
+                name='Keys0',
+                type='ref|list|ulong',
             ),
         ),
     ),
@@ -20405,8 +21552,9 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='ShopPackagePlatformKeys',
+                name='ShopPackagePlatform',
                 type='ref|list|int',
+                key='ShopPackagePlatform.dat',
                 enum='SHOP_PACKAGE_PLATFORM',
             ),
             Field(
@@ -20623,6 +21771,106 @@ specification = Specification({
             Field(
                 name='Frame_ArtFile',
                 type='ref|string',
+            ),
+        ),
+    ),
+    'SingleGroundLaser.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='ref|string',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+        ),
+    ),
+    'SkillArtVariations.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data2',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Variants',
+                type='ref|list|ref|string',
+            ),
+            Field(
+                name='Keys1',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data3',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Keys2',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Data4',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Keys3',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data5',
+                type='ref|list|int',
             ),
         ),
     ),
@@ -20843,21 +22091,16 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Data0',
-                type='ref|list|float',
-            ),
-            Field(
-                name='SurgeTypes',
-                type='ref|list|ulong',
-                key='SurgeTypes.dat',
-            ),
-            Field(
                 name='Flag6',
                 type='bool',
             ),
             Field(
-                name='Data1',
-                type='ref|list|int',
+                name='Flag7',
+                type='bool',
+            ),
+            Field(
+                name='Flag8',
+                type='bool',
             ),
         ),
     ),
@@ -20866,6 +22109,7 @@ specification = Specification({
             Field(
                 name='SkillTotemsKey',
                 type='int',
+                key='SkillTotems.dat',
             ),
             Field(
                 name='TotemSkinId',
@@ -20892,6 +22136,30 @@ specification = Specification({
                 name='MiscAnimated',
                 type='ulong',
                 key='MiscAnimated.dat',
+            ),
+        ),
+    ),
+    'SocketNotches.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Description',
+                type='ref|string',
+            ),
+            Field(
+                name='RedSocketImage',
+                type='ref|string',
+            ),
+            Field(
+                name='BlueSocketImage',
+                type='ref|string',
+            ),
+            Field(
+                name='GreenSocketImage',
+                type='ref|string',
             ),
         ),
     ),
@@ -21044,12 +22312,14 @@ specification = Specification({
     'SpectreOverrides.dat': File(
         fields=(
             Field(
-                name='Key0',
+                name='Monster',
                 type='ulong',
+                key='MonsterVarieties.dat',
             ),
             Field(
-                name='Key1',
+                name='Spectre',
                 type='ulong',
+                key='MonsterVarieties.dat',
             ),
             Field(
                 name='Keys0',
@@ -21076,6 +22346,7 @@ specification = Specification({
             Field(
                 name='SpecializedStash',
                 type='int',
+                key='StashId.dat',
             ),
             Field(
                 name='Name',
@@ -21084,6 +22355,7 @@ specification = Specification({
             Field(
                 name='ShowInStashes',
                 type='ref|list|int',
+                key='StashId.dat',
             ),
         ),
     ),
@@ -21153,6 +22425,7 @@ specification = Specification({
             Field(
                 name='Semantics',
                 type='int',
+                key='StatSemantics.dat',
             ),
             Field(
                 name='Flag1',
@@ -21185,7 +22458,7 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Unknown0',
+                name='HASH32',
                 type='int',
             ),
             Field(
@@ -21195,8 +22468,9 @@ specification = Specification({
                 key_id='Id',
             ),
             Field(
-                name='Key0',
+                name='Category',
                 type='ulong',
+                key='PassiveSkillStatCategories.dat',
             ),
             Field(
                 name='Flag4',
@@ -21290,19 +22564,23 @@ specification = Specification({
                 unique=True,
             ),
             Field(
-                name='Key0',
-                type='ulong',
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
             ),
             Field(
                 name='SpawnWeight',
                 type='int',
             ),
             Field(
-                name='Key1',
+                name='Key0',
                 type='ulong',
             ),
             Field(
-                name='Key2',
+                name='Key1',
                 type='ulong',
             ),
             Field(
@@ -21323,16 +22601,8 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key3',
+                name='Key2',
                 type='ulong',
-            ),
-            Field(
-                name='Unknown0',
-                type='int',
-            ),
-            Field(
-                name='Unknown1',
-                type='int',
             ),
             Field(
                 name='Unknown2',
@@ -21343,6 +22613,18 @@ specification = Specification({
                 type='int',
             ),
             Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Key3',
+                type='ulong',
+            ),
+            Field(
                 name='Key4',
                 type='ulong',
             ),
@@ -21351,20 +22633,20 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Key6',
-                type='ulong',
-            ),
-            Field(
                 name='Flag3',
                 type='bool',
             ),
             Field(
-                name='Key7',
+                name='Key6',
                 type='ulong',
             ),
             Field(
                 name='Flag4',
                 type='bool',
+            ),
+            Field(
+                name='Key7',
+                type='ulong',
             ),
         ),
     ),
@@ -21428,6 +22710,10 @@ specification = Specification({
                 name='Unknown0',
                 type='int',
             ),
+            Field(
+                name='Flag4',
+                type='bool',
+            ),
         ),
     ),
     'SummonedSpecificBarrels.dat': File(
@@ -21447,11 +22733,11 @@ specification = Specification({
                 type='ulong',
             ),
             Field(
-                name='Unknown0',
-                type='int',
+                name='Key1',
+                type='ulong',
             ),
             Field(
-                name='Key1',
+                name='Key2',
                 type='ulong',
             ),
         ),
@@ -21516,6 +22802,18 @@ specification = Specification({
                 name='Unknown4',
                 type='int',
             ),
+            Field(
+                name='Unknown5',
+                type='ref|string',
+            ),
+            Field(
+                name='Flag4',
+                type='bool',
+            ),
+            Field(
+                name='Flag5',
+                type='bool',
+            ),
         ),
     ),
     'SummonedSpecificMonstersOnDeath.dat': File(
@@ -21572,8 +22870,9 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='ShopPackagePlatformKey',
+                name='ShopPackagePlatform',
                 type='ref|list|int',
+                key='ShopPackagePlatform.dat',
                 enum='SHOP_PACKAGE_PLATFORM',
             ),
             Field(
@@ -21619,6 +22918,10 @@ specification = Specification({
                 name='SurgeEffects',
                 type='ref|list|ulong',
                 key='SurgeEffects.dat',
+            ),
+            Field(
+                name='IntId',
+                type='int',
             ),
         ),
     ),
@@ -22084,6 +23387,10 @@ specification = Specification({
                 key='MonsterVarieties.dat',
             ),
             Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
                 name='Unknown2',
                 type='int',
             ),
@@ -22093,10 +23400,6 @@ specification = Specification({
             ),
             Field(
                 name='Unknown4',
-                type='int',
-            ),
-            Field(
-                name='Unknown5',
                 type='int',
             ),
             Field(
@@ -22149,6 +23452,68 @@ specification = Specification({
             ),
         ),
     ),
+    'TalkingPetAudioEvents.dat': File(
+        fields=(
+            Field(
+                name='Event',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+        ),
+    ),
+    'TalkingPetNPCAudio.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+                key='TalkingPetAudioEvents.dat',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+                key='TalkingPets.dat',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+        ),
+    ),
+    'TalkingPets.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+        ),
+    ),
     'TencentAutoLootPetCurrencies.dat': File(
         fields=(
             Field(
@@ -22182,6 +23547,14 @@ specification = Specification({
                 name='Unknown0',
                 type='int',
                 unique=True,
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Flag1',
+                type='bool',
             ),
         ),
     ),
@@ -22496,6 +23869,7 @@ specification = Specification({
             Field(
                 name='UITalkCategoriesKey',
                 type='int',
+                key='UITalkCategories.dat',
             ),
             Field(
                 name='OGGFile',
@@ -22865,8 +24239,9 @@ specification = Specification({
     'UniqueJewelLimits.dat': File(
         fields=(
             Field(
-                name='Key0',
+                name='JewelName',
                 type='ulong',
+                key='Words.dat',
             ),
             Field(
                 name='Limit',
@@ -22937,6 +24312,10 @@ specification = Specification({
                 name='Name',
                 type='ref|string',
             ),
+            Field(
+                name='IsDropDisabled',
+                type='bool',
+            ),
         ),
     ),
     'UniqueStashLayout.dat': File(
@@ -22965,19 +24344,19 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='Unknown2',
+                name='OverrideWidth',
                 type='int',
             ),
             Field(
-                name='Unknown3',
+                name='OverrideHeight',
                 type='int',
-            ),
-            Field(
-                name='ShowIfEmpty',
-                type='bool',
             ),
             Field(
                 name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='ShowIfEmpty',
                 type='bool',
             ),
             Field(
@@ -23255,8 +24634,9 @@ specification = Specification({
     'WeaponClasses.dat': File(
         fields=(
             Field(
-                name='Key0',
+                name='ItemClass',
                 type='ulong',
+                key='ItemClasses.dat',
             ),
             Field(
                 name='Unknown0',
@@ -23328,11 +24708,58 @@ specification = Specification({
             ),
         ),
     ),
+    'WindowCursors.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='CursorDefault',
+                type='ref|string',
+                file_path=True,
+                file_ext='.bmp',
+            ),
+            Field(
+                name='CursorClick',
+                type='ref|string',
+                file_path=True,
+                file_ext='.bmp',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='CursorHover',
+                type='ref|string',
+                file_path=True,
+                file_ext='.bmp',
+            ),
+            Field(
+                name='Description',
+                type='ref|string',
+            ),
+            Field(
+                name='IsEnabled',
+                type='bool',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+        ),
+    ),
     'Words.dat': File(
         fields=(
             Field(
-                name='WordlistsKey',
+                name='Wordlist',
                 type='int',
+                key='Wordlists.dat',
                 enum='WORDLISTS',
             ),
             Field(
@@ -23340,7 +24767,7 @@ specification = Specification({
                 type='ref|string',
             ),
             Field(
-                name='SpawnWeight_TagsKeys',
+                name='SpawnWeight_Tags',
                 type='ref|list|ulong',
                 key='Tags.dat',
             ),
@@ -23360,6 +24787,187 @@ specification = Specification({
                 name='Inflection',
                 type='ref|string',
                 description='the inflection identifier used for i18n in related fields',
+            ),
+        ),
+    ),
+    'WorldAreaLeagueChances.dat': File(
+        fields=(
+            Field(
+                name='Area',
+                type='ulong',
+                key='WorldAreas.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Unknown6',
+                type='int',
+            ),
+            Field(
+                name='Unknown7',
+                type='int',
+            ),
+            Field(
+                name='Unknown8',
+                type='int',
+            ),
+            Field(
+                name='Unknown9',
+                type='int',
+            ),
+            Field(
+                name='Unknown10',
+                type='int',
+            ),
+            Field(
+                name='Unknown11',
+                type='int',
+            ),
+            Field(
+                name='Unknown12',
+                type='int',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Unknown13',
+                type='int',
+            ),
+            Field(
+                name='Unknown14',
+                type='int',
+            ),
+            Field(
+                name='Unknown15',
+                type='int',
+            ),
+            Field(
+                name='Unknown16',
+                type='int',
+            ),
+            Field(
+                name='Unknown17',
+                type='int',
+            ),
+            Field(
+                name='Unknown18',
+                type='int',
+            ),
+            Field(
+                name='Unknown19',
+                type='int',
+            ),
+            Field(
+                name='Unknown20',
+                type='int',
+            ),
+            Field(
+                name='Unknown21',
+                type='int',
+            ),
+            Field(
+                name='Unknown22',
+                type='int',
+            ),
+            Field(
+                name='Unknown23',
+                type='int',
+            ),
+            Field(
+                name='Unknown24',
+                type='int',
+            ),
+            Field(
+                name='Unknown25',
+                type='int',
+            ),
+            Field(
+                name='Unknown26',
+                type='int',
+            ),
+            Field(
+                name='Unknown27',
+                type='int',
+            ),
+            Field(
+                name='Unknown28',
+                type='int',
+            ),
+            Field(
+                name='Unknown29',
+                type='int',
+            ),
+            Field(
+                name='Unknown30',
+                type='int',
+            ),
+            Field(
+                name='Unknown31',
+                type='int',
+            ),
+            Field(
+                name='Unknown32',
+                type='int',
+            ),
+            Field(
+                name='Unknown33',
+                type='int',
+            ),
+            Field(
+                name='Unknown34',
+                type='int',
+            ),
+            Field(
+                name='Unknown35',
+                type='int',
+            ),
+            Field(
+                name='Unknown36',
+                type='int',
+            ),
+            Field(
+                name='Unknown37',
+                type='int',
+            ),
+            Field(
+                name='Unknown38',
+                type='int',
+            ),
+            Field(
+                name='Unknown39',
+                type='int',
+            ),
+            Field(
+                name='Unknown40',
+                type='int',
+            ),
+            Field(
+                name='Unknown41',
+                type='int',
             ),
         ),
     ),
@@ -23681,11 +25289,11 @@ specification = Specification({
             ),
             Field(
                 name='Unknown1',
-                type='ref|string',
+                type='int',
             ),
             Field(
                 name='Unknown2',
-                type='ref|string',
+                type='int',
             ),
         ),
     ),
@@ -23701,4 +25309,127 @@ specification = Specification({
             ),
         ),
     ),
+    'AbyssRegions.dat': File(),
+    'AbyssTheme.dat': File(),
+    'AccountQuestFlags.dat': File(),
+    'AchievementSets.dat': File(),
+    'ActiveSkillTargetTypes.dat': File(),
+    'AdditionalLifeScalingPerLevel.dat': File(),
+    'AdditionalMonsterPacksStatMode.dat': File(),
+    'AfflictionRewardTypes.dat': File(),
+    'AlternateBehaviourTypes.dat': File(),
+    'AlternateTreePassiveSizes.dat': File(),
+    'AreaType.dat': File(),
+    'ArmourClasses.dat': File(),
+    'ArmourSurfaceTypes.dat': File(),
+    'AtlasExileInfluenceOutcomeTypes.dat': File(),
+    'AtlasModTiers.dat': File(),
+    'AtlasQuadrant.dat': File(),
+    'Attributes.dat': File(),
+    'BetrayalDialogueCue.dat': File(),
+    'BetrayalFlags.dat': File(),
+    'BetrayalTargetFlags.dat': File(),
+    'BetrayalUpgradeSlots.dat': File(),
+    'BuffCategories.dat': File(),
+    'BuffGroups.dat': File(),
+    'BuffMergeModes.dat': File(),
+    'BuffStackUIModes.dat': File(),
+    'BuffVisualSets.dat': File(),
+    'CharacterPanelStatContexts.dat': File(),
+    'ClientUIScreens.dat': File(),
+    'CooldownBypassTypes.dat': File(),
+    'CooldownGroups.dat': File(),
+    'CraftingBenchCustomActions.dat': File(),
+    'CurrencyUseTypes.dat': File(),
+    'DamageParticleEffectTypes.dat': File(),
+    'Default.dat': File(),
+    'DelveUpgradeType.dat': File(),
+    'Directions.dat': File(),
+    'Effectiveness.dat': File(),
+    'EvergreenAchievementTypes.dat': File(),
+    'ExpeditionDealFamilies.dat': File(),
+    'ExpeditionRelicModCategories.dat': File(),
+    'FlaskType.dat': File(),
+    'FlavourTextImages.dat': File(),
+    'GemTypes.dat': File(),
+    'GrantedEffectGroups.dat': File(),
+    'GroundEffectEffectTypes.dat': File(),
+    'HarvestColours.dat': File(),
+    'HarvestInfrastructureCategories.dat': File(),
+    'HarvestMetaCraftingOptions.dat': File(),
+    'HarvestPlantBoosterFamilies.dat': File(),
+    'HeistBlueprintWindowTypes.dat': File(),
+    'HeistChestTypes.dat': File(),
+    'HeistFormationMarkerType.dat': File(),
+    'HeistRoomTypes.dat': File(),
+    'InfluenceTypes.dat': File(),
+    'InvasionMonsterGroups.dat': File(),
+    'InvasionMonsterRoles.dat': File(),
+    'InventoryId.dat': File(),
+    'InventoryType.dat': File(),
+    'ItemCreationTemplateCustomAction.dat': File(),
+    'ItemSetNames.dat': File(),
+    'LabyrinthSecretLocations.dat': File(),
+    'LeagueCategory.dat': File(),
+    'LeagueFlags.dat': File(),
+    'LeagueQuestFlags.dat': File(),
+    'LeagueTrophy.dat': File(),
+    'LegionMonsterTypes.dat': File(),
+    'LegionRankTypes.dat': File(),
+    'LegionRewardTypes.dat': File(),
+    'MapFragmentFamilies.dat': File(),
+    'MapStashTabLayout.dat': File(),
+    'MicrotransactionRecycleCategories.dat': File(),
+    'MicrotransactionSlotId.dat': File(),
+    'MissionTileMap.dat': File(),
+    'ModAuraFlags.dat': File(),
+    'ModDomains.dat': File(),
+    'ModFamily.dat': File(),
+    'ModGenerationType.dat': File(),
+    'ModSetNames.dat': File(),
+    'MonsterBehavior.dat': File(),
+    'MonsterFleeConditions.dat': File(),
+    'MonsterGroupNames.dat': File(),
+    'MonsterScalingByLevel.dat': File(),
+    'MonsterSize.dat': File(),
+    'MonsterSkillsAliveDead.dat': File(),
+    'MonsterSkillsAttackSpell.dat': File(),
+    'MonsterSkillsClientInstance.dat': File(),
+    'MonsterSkillsHull.dat': File(),
+    'MonsterSkillsOrientation.dat': File(),
+    'MonsterSkillsPlacement.dat': File(),
+    'MonsterSkillsReference.dat': File(),
+    'MonsterSkillsSequenceMode.dat': File(),
+    'MonsterSkillsShape.dat': File(),
+    'MonsterSkillsTargets.dat': File(),
+    'MonsterSkillsWaveDirection.dat': File(),
+    'NPCTextAudioInterruptRules.dat': File(),
+    'OldMapStashTabLayout.dat': File(),
+    'Orientations.dat': File(),
+    'PassiveSkillTypes.dat': File(),
+    'PerLevelValues.dat': File(),
+    'PreloadPriorities.dat': File(),
+    'ProphecySetNames.dat': File(),
+    'QuestFlags.dat': File(),
+    'QuestRewardType.dat': File(),
+    'QuestStateCalculation.dat': File(),
+    'RelativeImportanceConstants.dat': File(),
+    'ScarabTypes.dat': File(),
+    'ShopForumBadge.dat': File(),
+    'ShopPackagePlatform.dat': File(),
+    'ShopPaymentPackageProxy.dat': File(),
+    'SkillMines.dat': File(),
+    'SkillMorphDisplayOverlayCondition.dat': File(),
+    'SkillMorphDisplayOverlayStyle.dat': File(),
+    'SkillTotems.dat': File(),
+    'StashId.dat': File(),
+    'StatInterpolationTypes.dat': File(),
+    'StatSemantics.dat': File(),
+    'SurgeCategory.dat': File(),
+    'UITalkCategories.dat': File(),
+    'UniqueSetNames.dat': File(),
+    'WeaponArmourCommon.dat': File(),
+    'WeaponDamageScaling.dat': File(),
+    'WeaponSoundTypes.dat': File(),
+    'Wordlists.dat': File(),
 })

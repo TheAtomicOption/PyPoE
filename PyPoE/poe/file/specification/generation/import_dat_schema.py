@@ -21,8 +21,8 @@ def main():
         schema_json = _read_dat_schema_local()
     else:
         schema_json = _read_latest_dat_schema_release()
-    input_spec = _load_dat_schema_tables(schema_json)
-    output_spec = _convert_tables(input_spec)
+    tables, enumerations = _load_dat_schema(schema_json)
+    output_spec = _convert(tables, enumerations)
     _write_spec(output_spec)
 
 
@@ -38,19 +38,23 @@ def _read_dat_schema_local() -> str:
         return f.read()
 
 
-def _load_dat_schema_tables(schema_json: str):
+def _load_dat_schema(schema_json: str):
     data = json.loads(schema_json, object_hook=lambda d: SimpleNamespace(**d))
-    return sorted(data.tables, key=lambda table: table.name)
+    tables = sorted(data.tables, key=lambda table: table.name)
+    enumerations = sorted(data.enumerations, key=lambda enumeration: enumeration.name)
+    return tables, enumerations
 
 
-def _convert_tables(tables: list) -> str:
+def _convert(tables: list, enumerations: list) -> str:
     spec = ''
     converted_tables = [_convert_table(table) for table in tables]
+    converted_enumerations = [_convert_enumeration(enumeration) for enumeration in enumerations]
     with open('template.py', 'r') as f:
         f.readline()
         for line in f:
             if line == '    # <specification>\n':
                 spec += ''.join(converted_tables)
+                spec += ''.join(converted_enumerations)
             else:
                 spec += line
     return spec
@@ -66,6 +70,16 @@ def _convert_table(table) -> str:
         spec += _convert_virtual_fields(virtual_fields[table_name])
 
     spec += "    ),\n"
+    return spec
+
+
+# todo properly import enumerations from dat-schema, making most of custom_attributes and their constants obsolete
+# - enumrow: resolve to the enumeration's indexing entry and use that as key_offset
+# - enumrow: set enum='referenced_table' if the enumeration has enumerators
+# - create an IntEnumOverride subclass for each enumeration that has enumerators
+# - add these classes to __all__
+def _convert_enumeration(enumeration) -> str:
+    spec = f"    '{enumeration.name}.dat': File(),\n"
     return spec
 
 
@@ -126,6 +140,7 @@ _TYPE_MAP = {
     'f32': 'float',
     'foreignrow': 'ulong',
     'row': 'ref|generic',
+    'enumrow': 'int',
 }
 
 

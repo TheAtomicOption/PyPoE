@@ -7,18 +7,23 @@ class CustomizedField:
 
 custom_attributes = {
     'BaseItemTypes.dat': {
-        'ModDomainsKey': CustomizedField(
+        'ModDomain': CustomizedField(
             enum='MOD_DOMAIN',
         ),
     },
     'BestiaryRecipeComponent.dat': {
-        'RarityKey': CustomizedField(
+        'BeastRarity': CustomizedField(
             enum='RARITY',
         ),
     },
     'BetrayalUpgrades.dat': {
         'BetrayalUpgradeSlotsKey': CustomizedField(
             enum='BETRAYAL_UPGRADE_SLOTS',
+        ),
+    },
+    'CraftingBenchOptions.dat': {
+        'CraftingBenchCustomAction': CustomizedField(
+            enum='CraftingBenchCustomActions',
         ),
     },
     'DelveUpgrades.dat': {
@@ -29,6 +34,9 @@ custom_attributes = {
     'GrantedEffectsPerLevel.dat': {
         'StatInterpolationTypesKeys': CustomizedField(
             enum='STAT_INTERPOLATION_TYPES',
+        ),
+        'CooldownBypassType': CustomizedField(
+            enum='CooldownBypassTypes',
         ),
     },
     'HarvestObjects.dat': {
@@ -55,17 +63,17 @@ custom_attributes = {
         ),
     },
     'ShopPaymentPackage.dat': {
-        'ShopPackagePlatformKeys': CustomizedField(
+        'ShopPackagePlatform': CustomizedField(
             enum='SHOP_PACKAGE_PLATFORM',
         ),
     },
     'SupporterPackSets.dat': {
-        'ShopPackagePlatformKey': CustomizedField(
+        'ShopPackagePlatform': CustomizedField(
             enum='SHOP_PACKAGE_PLATFORM',
         ),
     },
     'Words.dat': {
-        'WordlistsKey': CustomizedField(
+        'Wordlist': CustomizedField(
             enum='WORDLISTS',
         ),
     },

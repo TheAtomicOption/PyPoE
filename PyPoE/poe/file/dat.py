@@ -1091,7 +1091,17 @@ class RelationalReader(AbstractFileCache):
         vf = self._dv_set_value if df.reader.use_dat_value else self._simple_set_value
 
         for key, spec_row in df.reader.specification.fields.items():
-            if spec_row.key:
+            if spec_row.enum:
+                const_enum = getattr(constants, spec_row.enum)
+                index = df.reader.table_columns[key]['index']
+                for i, row in enumerate(df.reader.table_data):
+                    df.reader.table_data[i][index] = vf(
+                        value=row[index],
+                        other=const_enum,
+                        key=None,
+                        offset=0
+                    )
+            elif spec_row.key:
                 if df.reader.x64:
                     spec_row_key = spec_row.key.replace('.dat', '.dat64')
                 else:
@@ -1127,16 +1137,6 @@ class RelationalReader(AbstractFileCache):
                                 'msg': e.msg,
                             },
                         )
-            elif spec_row.enum:
-                const_enum = getattr(constants, spec_row.enum)
-                index = df.reader.table_columns[key]['index']
-                for i, row in enumerate(df.reader.table_data):
-                    df.reader.table_data[i][index] = vf(
-                        value=row[index],
-                        other=const_enum,
-                        key=None,
-                        offset=0
-                    )
 
         return df
 
