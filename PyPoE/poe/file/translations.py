@@ -2206,10 +2206,15 @@ TranslationQuantifier(
 
 TranslationQuantifier(
     id='divide_by_ten_1dp',
-    handler=lambda v: round(v//10,1),
+    handler=lambda v: round(v/10, 1),
     reverse_handler=lambda v: int(v)*10,
 )
 
+TranslationQuantifier(
+    id='divide_by_ten_1dp_if_required',
+    handler=lambda v: round(v/10, 1),
+    reverse_handler=lambda v: int(v)*10,
+)
 
 TranslationQuantifier(
     id='divide_by_twelve',
@@ -2221,6 +2226,12 @@ TranslationQuantifier(
     id='divide_by_fifteen_0dp',
     handler=lambda v: v//15,
     reverse_handler=lambda v: int(v)*15,
+)
+
+TranslationQuantifier(
+    id='divide_by_fifty',
+    handler=lambda v: v/50,
+    reverse_handler=lambda v: int(v)*50,
 )
 
 TranslationQuantifier(
@@ -2281,6 +2292,12 @@ TranslationQuantifier(
     id='multiply_by_four',
     handler=lambda v: v*4,
     reverse_handler=lambda v: int(v)//4,
+)
+
+TranslationQuantifier(
+    id='multiply_by_ten',
+    handler=lambda v: v*10,
+    reverse_handler=lambda v: int(v)//10,
 )
 
 TranslationQuantifier(
