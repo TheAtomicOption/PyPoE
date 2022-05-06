@@ -12567,6 +12567,10 @@ specification = Specification({
                 type='ulong',
                 key='HideoutDoodadCategory.dat',
             ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
         ),
     ),
     'HideoutNPCs.dat': File(
@@ -13828,6 +13832,22 @@ specification = Specification({
             Field(
                 name='Unknown16',
                 type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
+            ),
+            Field(
+                name='Key3',
+                type='ulong',
             ),
         ),
     ),
@@ -19952,7 +19972,7 @@ specification = Specification({
                 key='PassiveSkills.dat',
             ),
             Field(
-                name='Data0',
+                name='StartIndices',
                 type='ref|list|int',
             ),
         ),

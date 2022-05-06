@@ -2241,6 +2241,12 @@ TranslationQuantifier(
 )
 
 TranslationQuantifier(
+    id='divide_by_one_thousand',
+    handler=lambda v: v/1000,
+    reverse_handler=lambda v: int(v)*1000,
+)
+
+TranslationQuantifier(
     id='milliseconds_to_seconds',
     handler=lambda v: v/1000,
     reverse_handler=lambda v: float(v)*1000,
