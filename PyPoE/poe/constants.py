@@ -715,7 +715,8 @@ class MOD_DOMAIN(IntEnumOverride):
     EXPEDITION_RELIC = 27
     UNVEILED = 28
     ELDRITCH_ALTAR = 29
-    UNDEFINED = 30
+    SENTINEL = 30
+    UNDEFINED = 31
 
     # legacy names
     MASTER = CRAFTED
@@ -796,9 +797,8 @@ class MOD_GENERATION_TYPE(IntEnumOverride):
     SCOURGE_DETRIMENT = 25
     SCOURGE_GIMMICK = 26
     UNKNOWN_27 = 27
-    ARCHNEMESIS_MONSTER = 28
-    EXARCH_IMPLICIT = 29
-    EATER_IMPLICIT = 30
+    EXARCH_IMPLICIT = 28
+    EATER_IMPLICIT = 29
 
 
 class WORDLISTS(IntEnumOverride):
@@ -947,6 +947,12 @@ class CooldownBypassTypes(IntEnumOverride):
     EXPEND_FRENZY_CHARGE = 2
     EXPEND_POWER_CHARGE = 3
     NONE = 4
+
+
+class BaseItemTypeVisibility(IntEnumOverride):
+    HIDDEN = 0
+    VISIBLE = 1
+    UNKNOWN_2 = 2
 
 
 # =============================================================================

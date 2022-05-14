@@ -1713,8 +1713,8 @@ specification = Specification({
                 type='int',
             ),
             Field(
-                name='CharactersKey',
-                type='ulong',
+                name='Characters',
+                type='ref|list|ulong',
                 key='Characters.dat',
             ),
             Field(
@@ -1753,6 +1753,10 @@ specification = Specification({
             Field(
                 name='Unknown1',
                 type='int',
+            ),
+            Field(
+                name='BackgroundImage',
+                type='ref|string',
             ),
         ),
     ),
@@ -2627,8 +2631,10 @@ specification = Specification({
                 enum='MOD_DOMAIN',
             ),
             Field(
-                name='IsDropDisabled',
-                type='bool',
+                name='SiteVisibility',
+                type='int',
+                key='BaseItemTypeVisibility.dat',
+                enum='BaseItemTypeVisibility',
             ),
             Field(
                 name='ItemVisualIdentity',
@@ -4380,17 +4386,12 @@ specification = Specification({
                 type='bool',
             ),
             Field(
-                name='Key1',
-                type='ulong',
+                name='Keys0',
+                type='ref|list|ulong',
             ),
             Field(
                 name='Flag17',
                 type='bool',
-            ),
-            Field(
-                name='Keys0',
-                type='ref|list|ulong',
-                key='Stats.dat',
             ),
             Field(
                 name='Keys1',
@@ -4408,17 +4409,38 @@ specification = Specification({
                 key='Stats.dat',
             ),
             Field(
-                name='Unknown5',
-                type='int',
+                name='Keys4',
+                type='ref|list|ulong',
+                key='Stats.dat',
             ),
             Field(
                 name='Flag18',
                 type='bool',
             ),
             Field(
-                name='Key2',
+                name='Flag19',
+                type='bool',
+            ),
+            Field(
+                name='Flag20',
+                type='bool',
+            ),
+            Field(
+                name='Flag21',
+                type='bool',
+            ),
+            Field(
+                name='Flag22',
+                type='bool',
+            ),
+            Field(
+                name='Key1',
                 type='ulong',
                 key='Stats.dat',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
             ),
         ),
     ),
@@ -4479,6 +4501,11 @@ specification = Specification({
             Field(
                 name='Flag1',
                 type='bool',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+                key='Stats.dat',
             ),
         ),
     ),
@@ -7271,6 +7298,88 @@ specification = Specification({
             ),
         ),
     ),
+    'DroneBaseTypes.dat': File(
+        fields=(
+            Field(
+                name='BaseType',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='Type',
+                type='ulong',
+                key='DroneTypes.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Visual',
+                type='ulong',
+                key='BuffVisuals.dat',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='UseAchievement',
+                type='ulong',
+                key='AchievementItems.dat',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+        ),
+    ),
+    'DroneTypes.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+                key='MonsterVarieties.dat',
+            ),
+            Field(
+                name='DeployText',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown1',
+                type='ref|string',
+            ),
+            Field(
+                name='UnlockedStat',
+                type='ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='SocketableText',
+                type='ref|string',
+            ),
+            Field(
+                name='NotPoweredText',
+                type='ref|string',
+            ),
+        ),
+    ),
     'DropEffects.dat': File(
         fields=(
             Field(
@@ -10002,6 +10111,22 @@ specification = Specification({
                 name='GrantedEffect',
                 type='ref|generic',
                 key='GrantedEffects.dat',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Flag4',
+                type='bool',
             ),
         ),
     ),
@@ -13304,6 +13429,19 @@ specification = Specification({
                 name='Flag1',
                 type='bool',
             ),
+            Field(
+                name='Flag2',
+                type='bool',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Flags',
+                type='ref|list|int',
+                key='ItemClassFlags.dat',
+            ),
         ),
     ),
     'ItemCostPerLevel.dat': File(
@@ -15413,6 +15551,10 @@ specification = Specification({
                 name='ArchnemesisTier',
                 type='int',
             ),
+            Field(
+                name='SentinelTier',
+                type='int',
+            ),
         ),
     ),
     'MapStashSpecialTypeEntries.dat': File(
@@ -15730,6 +15872,20 @@ specification = Specification({
             Field(
                 name='Data0',
                 type='ref|list|byte',
+            ),
+            Field(
+                name='CompletionAchievements',
+                type='ref|list|ulong',
+                key='AchievementItems.dat',
+            ),
+        ),
+    ),
+    'MavenJewelRadiusKeystones.dat': File(
+        fields=(
+            Field(
+                name='Keystone',
+                type='ulong',
+                key='PassiveSkills.dat',
             ),
         ),
     ),
@@ -17216,6 +17372,10 @@ specification = Specification({
             Field(
                 name='HASH32',
                 type='int',
+            ),
+            Field(
+                name='Data1',
+                type='ref|list|int',
             ),
         ),
         virtual_fields=(
@@ -19268,6 +19428,10 @@ specification = Specification({
                 type='ulong',
                 key='Stats.dat',
             ),
+            Field(
+                name='HasAreaMissions',
+                type='bool',
+            ),
         ),
     ),
     'NPCPortraits.dat': File(
@@ -19723,6 +19887,10 @@ specification = Specification({
                 name='Flag3',
                 type='bool',
             ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
         ),
     ),
     'OnKillAchievements.dat': File(
@@ -19910,7 +20078,7 @@ specification = Specification({
                 key='BaseItemTypes.dat',
             ),
             Field(
-                name='Unknown0',
+                name='QuestState',
                 type='int',
             ),
             Field(
@@ -20425,6 +20593,11 @@ specification = Specification({
             Field(
                 name='Key0',
                 type='ulong',
+            ),
+            Field(
+                name='SoundEffect',
+                type='ulong',
+                key='SoundEffects.dat',
             ),
         ),
         virtual_fields=(
@@ -22023,6 +22196,232 @@ specification = Specification({
             Field(
                 name='MinMapTier',
                 type='int',
+            ),
+        ),
+    ),
+    'SentinelCraftingCurrency.dat': File(
+        fields=(
+            Field(
+                name='Currency',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='Type',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelDroneInventoryLayout.dat': File(
+        fields=(
+            Field(
+                name='DroneType',
+                type='ulong',
+                key='DroneTypes.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelPassiveStats.dat': File(
+        fields=(
+            Field(
+                name='Key0',
+                type='ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelPassiveTypes.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='DefaultIcon',
+                type='ref|string',
+            ),
+            Field(
+                name='ActiveIcon',
+                type='ref|string',
+            ),
+            Field(
+                name='DroneType',
+                type='ulong',
+                key='DroneTypes.dat',
+            ),
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelPassives.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='HASH16',
+                type='int',
+            ),
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Data0',
+                type='ref|list|int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelPowerExpLevels.dat': File(
+        fields=(
+            Field(
+                name='Unknown0',
+                type='int',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+        ),
+    ),
+    'SentinelStorageLayout.dat': File(
+        fields=(
+            Field(
+                name='Id',
+                type='ref|string',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+                key='BaseItemTypes.dat',
+            ),
+            Field(
+                name='DroneType',
+                type='ulong',
+                key='DroneTypes.dat',
+            ),
+            Field(
+                name='Flag0',
+                type='bool',
+            ),
+            Field(
+                name='Unknown0',
+                type='ref|string',
+            ),
+            Field(
+                name='Unknown1',
+                type='int',
+            ),
+            Field(
+                name='Unknown2',
+                type='int',
+            ),
+            Field(
+                name='Unknown3',
+                type='int',
+            ),
+            Field(
+                name='Unknown4',
+                type='int',
+            ),
+            Field(
+                name='Unknown5',
+                type='int',
+            ),
+            Field(
+                name='Unknown6',
+                type='int',
+            ),
+            Field(
+                name='Unknown7',
+                type='int',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+                key='ItemClasses.dat',
+            ),
+        ),
+    ),
+    'SentinelTaggedMonsterStats.dat': File(
+        fields=(
+            Field(
+                name='TaggedStat',
+                type='ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='Key0',
+                type='ulong',
+                key='Stats.dat',
+            ),
+            Field(
+                name='Keys0',
+                type='ref|list|ulong',
+            ),
+            Field(
+                name='Key1',
+                type='ulong',
+            ),
+            Field(
+                name='Key2',
+                type='ulong',
             ),
         ),
     ),
@@ -26037,6 +26436,14 @@ specification = Specification({
                 name='Data1',
                 type='ref|list|byte',
             ),
+            Field(
+                name='Key3',
+                type='ulong',
+            ),
+            Field(
+                name='Unknown22',
+                type='int',
+            ),
         ),
     ),
     'WorldPopupIconTypes.dat': File(
@@ -26089,6 +26496,7 @@ specification = Specification({
     'AtlasModTiers.dat': File(),
     'AtlasQuadrant.dat': File(),
     'Attributes.dat': File(),
+    'BaseItemTypeVisibility.dat': File(),
     'BetrayalDialogueCue.dat': File(),
     'BetrayalFlags.dat': File(),
     'BetrayalTargetFlags.dat': File(),
@@ -26130,6 +26538,7 @@ specification = Specification({
     'InvasionMonsterRoles.dat': File(),
     'InventoryId.dat': File(),
     'InventoryType.dat': File(),
+    'ItemClassFlags.dat': File(),
     'ItemCreationTemplateCustomAction.dat': File(),
     'ItemSetNames.dat': File(),
     'LabyrinthSecretLocations.dat': File(),

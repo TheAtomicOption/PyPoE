@@ -10,6 +10,9 @@ custom_attributes = {
         'ModDomain': CustomizedField(
             enum='MOD_DOMAIN',
         ),
+        'SiteVisibility': CustomizedField(
+            enum='BaseItemTypeVisibility',
+        ),
     },
     'BestiaryRecipeComponent.dat': {
         'BeastRarity': CustomizedField(
